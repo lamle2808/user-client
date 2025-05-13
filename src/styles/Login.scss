@@ -1,0 +1,188 @@
+.container
+{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    // background-color: rgb(0, 0, 0);
+    margin: 3% 0;
+   
+    width: 100%;
+    height: 60vh;
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns:50% 50%;
+    color: black;
+    
+  
+    .lbInput
+    {
+        font-size: 18px;
+        width: 100%;
+        min-width: 20em;
+        margin-bottom: 10px;
+       text-align: left; 
+      
+    }
+
+}
+
+.containerLogin
+{
+    margin: 5% auto;
+    width: 400px !important;
+    max-width: 90% !important;
+    background-color: #fff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  
+    .lbInput
+    {
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 10px;
+       text-align: left; 
+        color: #333;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        
+        .input-group-text {
+            background-color: #f5f5f5;
+            border: none;
+            color: #666;
+            padding: 0 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            svg {
+                font-size: 16px;
+            }
+        }
+        
+        .form-control {
+            height: 45px !important;
+            font-size: 15px !important;
+            padding: 0 15px !important;
+            border: none !important;
+            box-shadow: none !important;
+            background-color: #fff !important;
+            
+            &:focus {
+                border-color: transparent !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .form-check-input {
+        margin-top: 0.25rem;
+        
+        &:checked {
+            background-color: #0288d1;
+            border-color: #0288d1;
+        }
+    }
+    
+    .form-check-label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, #0288d1 0%, #03A9F4 100%) !important;
+        border: none;
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+        height: 48px;
+
+        &:hover {
+            background: linear-gradient(90deg, #0277bd 0%, #0288d1 100%) !important;
+            box-shadow: 0 4px 8px rgba(2, 136, 209, 0.3);
+        }
+    }
+
+    a.btn-primary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        height: 48px;
+    }
+}
+
+.logoLogin
+{
+    width: 90px !important;
+    margin-bottom: 20px;
+}
+
+.containerLogo
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    
+    h2 {
+        font-weight: 600;
+        color: #0288d1;
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+}
+
+.bgLogin
+{
+    // background-image: url("../assets/images/bgLogin.jpg");
+    background-size: cover;
+}
+
+@media (max-width: 992px) {
+    .containerLogin {
+        width: 60% !important;
+        margin-left: 20% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .containerLogin {
+        width: 80% !important;
+        margin-left: 10% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .containerLogin {
+        padding: 25px 20px;
+    }
+    
+    .logoLogin {
+        width: 80px !important;
+    }
+    
+    .containerLogo h2 {
+        font-size: 22px;
+    }
+    
+    .input-group .form-control {
+        height: 42px !important;
+    }
+    
+    .btn-primary, a.btn-primary {
+        height: 44px;
+    }
+}

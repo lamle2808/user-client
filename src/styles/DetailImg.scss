@@ -1,0 +1,122 @@
+.detailItemContainer
+{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 40px 0;
+    width: 40%;
+    float: left;
+    margin-top: 2.5em;
+    padding: 3em;
+    margin-left: 2em;
+    background-color:rgba(222, 238, 253, 0.432);
+    display: flex;
+     justify-content: center;
+    align-items: center;
+    width:auto;
+    .detailImg
+    {
+        img
+        {
+           width: 35em;
+           height:35em;
+            object-fit:cover;
+        }
+        
+        
+      
+      
+
+     
+    }
+    .divChild{ 
+        
+       
+       
+            
+            
+            .btnNext, .btnPre
+            {	
+                display: inline;
+                position:relative;
+               margin-left: -4em;
+               top:-350px;
+                
+                border-radius: 100%;
+                border: none;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                width: 50px;
+                height: 50px;
+              
+            }
+            .btnPre
+            {
+                float: right;
+                right: -4em;
+            }
+            .btnNext{
+                float: left;
+            }
+                
+        
+       
+        .itemChild
+        {
+            margin-top: 7%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            margin-left: 7%;;
+            max-width: 500px;
+            height: 50%;
+            list-style: none;
+           
+            overflow: hidden;
+            
+    
+            
+    
+    
+            img
+            {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 5%;
+            }
+           
+           li{
+              
+              
+                margin-right: 10px;
+                border-radius: 1px;
+                cursor: pointer;
+                box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;  
+                &:hover
+                {
+                    transform: scaleX(1.05);
+                    transition: all 0.3s ease-in-out;
+               }
+               &:active
+                  {
+                    transform: scale(0.95);
+                    transition: all 0.3s ease-in-out;
+                    // border: 1px solid rgb(177, 3, 41);
+                  }
+               
+                
+            }
+           
+        }
+
+
+
+    }
+   
+   
+}
+.activeImg
+{
+    border: 2px solid rgb(177, 3, 41);
+    border-radius: 2px;
+
+}

@@ -1,0 +1,53 @@
+.containerDes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(221, 165, 165, 0.19);
+}
+
+.editor {
+  // position: relative;
+
+  // width: 50%;
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-align: center;
+}
+
+.preview {
+  // position: relative;
+  // width: 66%;
+  max-width: 56%;
+  height: 100%;
+  min-height: 30vh;
+  font-size: 13px;
+  word-wrap: break-word; /* Cho phép chia từ giữa để tránh tràn */
+  white-space: pre-line;
+  // max-width: 66%;
+  // display: inline-block;
+}
+.asd {
+  background-color: "#FF00FF"; /* Màu xám cho dòng chẵn */
+}
+
+.odd-row {
+  background-color: #ffffff; /* Màu trắng cho dòng lẻ */
+}
+.editorInput {
+  width: 100%;
+  height: 100%;
+}
+.ql-editor {
+  white-space: pre-line !important;
+  min-height: 30vh;
+}

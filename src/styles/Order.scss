@@ -1,0 +1,72 @@
+.v-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 60%;
+
+}
+.h-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+    font-family: "Helvetica", sans-serif;
+    font-size: 16px;
+    // color: #000000; /* Màu xanh */
+    font-weight: bold;
+    padding: 2px ;
+    line-height: 1.8;
+    align-items: center;
+    // text-align: center;
+    img{
+        width: 100px;
+        height: 100px;
+    }
+
+}
+.headerOrder
+{
+    border-radius: 2px;
+    background-color: #164B60;
+    color: #EEEEEE;
+    margin-left: -10px;
+    padding-right: 10px;
+    margin-right: -10px;
+    margin-top: -10px;
+}
+
+.footerOrder
+{
+    background-color: #164B60;
+    margin-left: -10px;
+    padding-right: 10px;
+    margin-right: -10px;
+}
+.totalOrder
+{
+   right:0;
+    position: relative;
+    display: block;
+    // background-color: #0077B6;
+}
+.orderItemContainer
+{
+    padding: 2em;
+    border-bottom: 1px solid #cfcfcf;
+}
+.orderDetails
+{
+    // box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+    padding: 1em;
+   
+}
+
+.order-item
+{
+    // color: #333; /* Đen */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 10px 0; /* Thêm khoảng cách giữa các đơn hàng */
+    padding: 10px 10px 0px 10px; /* Thêm padding cho đơn hàng */
+    border: 1px solid #ccc; /* Thêm viền */
+    }

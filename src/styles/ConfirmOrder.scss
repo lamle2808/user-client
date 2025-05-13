@@ -1,0 +1,184 @@
+/* Body */
+.containerFormCheckOut {
+    display: flex;
+    // grid-template-columns: auto;
+    flex-direction: column;
+    // gap: 0px;
+    justify-content: center;
+    position: relative;
+    width: 35em;
+    top:-50%;
+    left:30%;
+  }
+  
+
+  
+  .cardFormCheckOut {
+    width: 35em;
+    // display: flex;
+   color: aliceblue;
+    // justify-self: center;
+    background: #AFD3E2;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+  .closeBtn
+  {
+    float: right;
+   position: absolute;
+   right: 10px;
+   border: none;
+   background-color: #AA5656;
+   color: #AFD3E2;
+   border-radius: 3px;
+  }
+  .titleFormCheckOut {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid #0B2447;
+    font-weight: 700;
+    font-size: 16px;
+    color: #181D31;
+  }
+  
+  /* Cart */
+  .cartFormCheckOut {
+    border-radius: 19px 19px 0px 0px;
+    
+  }
+  
+  .cartFormCheckOut .steps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .cartFormCheckOut .stepsFormCheckOut .stepFormCheckOut {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3em;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .cartFormCheckOut .stepsFormCheckOut .stepFormCheckOut .spanConFirmOrder {
+    font-size: 13px;
+    font-weight: 600;
+    color: #19376D;
+    
+    // margin-bottom: 8px;
+    display: inblock;
+  }
+  
+  .cartFormCheckOut .stepsFormCheckOut .stepFormCheckOut p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #19376D;
+  }
+  
+  /* Promo */
+  .promo form {
+    display: flex;
+
+
+   
+    padding: 0px;
+  }
+  
+  .input_field {
+    width: auto;
+    height: 36px;
+    padding: 0 0 0 12px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #E5C7C5;
+    background-color: #F4E2DE;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .input_field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #F3D2C9;
+    background-color: #F4E2DE;
+  }
+  
+  .promo form button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 18px;
+    gap: 10px;
+    width: 100%;
+    height: 36px;
+    background: #F3D2C9;
+    box-shadow: 0px 0.5px 0.5px #F3D2C9, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
+    border-radius: 5px;
+    border: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 15px;
+    color: #000000;
+  }
+  
+  /* Checkout */
+  .payments .details {
+    display: flex;
+  
+    padding: 0px;
+    gap: 5px;
+  }
+  
+  .payments .details .spanConFirmOrder:nth-child(odd) {
+    font-size: 17px;
+   
+    font-weight: 600;
+    color: #19376D;
+    margin: auto auto auto 0;
+  }
+  
+  .payments .details .spanConFirmOrder:nth-child(even) {
+    font-size: 18px;
+    font-weight: 600;
+    color: #19376D;
+    margin: auto 0 auto auto;
+  }
+  
+  .checkoutFormCheckOut .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 20px;
+    background-color: #ECC2C0;
+  }
+  
+  .priceFormCheckOut {
+    position: relative;
+    font-size: 22px;
+    color: #2B2B2F;
+    font-weight: 900;
+  }
+  
+  .checkout .checkout-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    color: #AFD3E2;
+    height: 36px;
+    background: #0B2447;
+    box-shadow: 0px 0.5px 0.5px #E5C7C5, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
+    border-radius: 7px;
+    border: 1px solid #ECC2C0;
+  width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }

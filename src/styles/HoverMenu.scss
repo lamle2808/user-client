@@ -1,0 +1,158 @@
+.hover-menu-paper {
+  position: absolute;
+  width: 500px;
+  display: flex;
+  border-radius: 0;
+  background-color: white;
+  z-index: 30;
+  margin-left: 0;
+  height: auto;
+  min-height: 350px;
+  margin-top: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  top: 0;
+  left: 250px;
+  opacity: 1;
+  visibility: visible;
+  animation: fadeIn 0.2s ease-in-out;
+  border: 1px solid #f0f0f0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hover-menu-paper.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hover-menu-paper.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hover-bridge {
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  top: 0;
+  left: -20px;
+  background-color: transparent;
+  z-index: 25;
+}
+
+.hover-menu-stack {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 100%;
+}
+
+.hover-menu-category-column {
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 0;
+}
+
+.hover-menu-category-title {
+  color: #ff3d57 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f0f0f0;
+  display: block !important;
+  letter-spacing: 0.5px;
+}
+
+.hover-menu-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.hover-menu-item {
+  display: block;
+  padding: 6px 0;
+  font-size: 14px !important;
+  color: #555;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border-radius: 4px;
+  
+  &:hover {
+    color: #1890ff;
+    padding-left: 5px;
+    background-color: rgba(24, 144, 255, 0.05);
+  }
+}
+
+// Fix cho hover-menu
+.hover-menu-container {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 30;
+  height: 100%;
+  display: block;
+  /* Thêm vùng đệm vô hình để dễ di chuột qua */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 20px;
+    height: 100%;
+    z-index: 29;
+  }
+}
+
+@media (max-width: 992px) {
+  .hover-menu-paper {
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+    margin-top: 0;
+    height: auto;
+    max-height: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    left: 0;
+    animation: fadeInDown 0.3s ease;
+  }
+  
+  .hover-menu-category-column {
+    flex: 0 0 50%;
+  }
+  
+  .hover-menu-container {
+    position: static;
+    width: 100%;
+    
+    &:before {
+      display: none;
+    }
+  }
+
+  .hover-bridge {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hover-menu-paper {
+    margin-left: 0;
+  }
+  
+  .hover-menu-category-column {
+    flex: 0 0 100%;
+  }
+} 

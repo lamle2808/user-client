@@ -1,0 +1,112 @@
+/* ListItem.css */
+
+/* Định dạng container chứa danh sách */
+.list-container {
+  position: relative;
+  width: 92%;
+  min-height: 430px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Định dạng nút điều hướng */
+.btn-left, .btn-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.btn-left {
+  left: -3em;
+}
+
+.btn-right {
+  right: -3em;
+}
+
+/* Định dạng các nút Previous và Next */
+.btn-previous, .btn-next {
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1890ff !important;
+  border: none;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #40a9ff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  span {
+    color: #fff !important;
+    font-size: 18px;
+  }
+}
+
+/* Đảm bảo hàng và cột có khoảng cách đồng nhất */
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-3 {
+  width: 25%;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .list-container {
+    width: 95%;
+  }
+
+  .btn-left {
+    left: -1em;
+  }
+
+  .btn-right {
+    right: -1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-3 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-3 {
+    width: 100%;
+  }
+
+  .btn-left, .btn-right {
+    top: auto;
+    bottom: -20px;
+    transform: none;
+  }
+
+  .btn-left {
+    left: calc(50% - 40px);
+  }
+
+  .btn-right {
+    right: calc(50% - 40px);
+  }
+}
