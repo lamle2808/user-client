@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
 
 const Cart = () => {
-  const accessToken = localStorage.getItem("token");
   const [dataUser, setDataUser] = useState();
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
@@ -144,7 +143,6 @@ const Cart = () => {
                       <CartItem
                         item={item}
                         key={index}
-                        token={accessToken}
                         setCart={setCart}
                         updateCart={updateCart}
                         selected={selectedItems[item.id] || false}

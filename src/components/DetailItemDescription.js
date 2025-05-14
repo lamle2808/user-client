@@ -157,15 +157,16 @@ const DetailItemDescription = (props) => {
       toast.error("Vui lòng đăng nhập để mua hàng!");
       return;
     }
-
+    console.log(dataDes);
+    const matchedSpec = dataDes.loHang.product.specifications.find(
+      (spec) => spec.size === selectedSize && spec.color === selectedColor
+    );
+    console.log(matchedSpec);
     axios
       .post("/api/v1/shoppingCartDetails/saveOrUpdate", {
-        product: { id: dataDes.id },
+        product: { id: dataDes.id, productSpecifications: matchedSpec },
         shoppingCart: { id: dataUser.shoppingCart.id },
         quantity: quantity,
-        // Thêm thông tin về size và color nếu có API hỗ trợ
-        // size: selectedSize,
-        // color: selectedColor
       })
       .then(function () {
         toast.success("Thêm vào giỏ hàng thành công");
