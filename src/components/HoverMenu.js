@@ -3,9 +3,7 @@ import {
   dataWomen,
   dataMen,
   dataKids,
-  dataKids2,
-  dataAccessories,
-  dataAccessories2,
+  dataAccessories
 } from "../assets/action/Data";
 import { 
   aoThunData, 
