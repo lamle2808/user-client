@@ -143,6 +143,8 @@ const DetailItemDescription = (props) => {
       toast.warning("Vui lòng chọn kích thước và màu sắc!");
       return;
     }
+    localStorage.setItem("data_size", selectedSize);
+    localStorage.setItem("data_color", selectedColor);
     const newPath = `/BuyNow/${props.data}`;
     history.push(newPath);
   };

@@ -72,6 +72,7 @@ function BuyNow() {
     axios
       .get(`/api/v1/products/getById/${id}`)
       .then(function (response) {
+        console.log( response.data);
         setData(response.data);
         setImage(response.data.imageProducts[0].imageLink);
         setSale(response.data.sale?.discount || 0);
@@ -111,6 +112,16 @@ function BuyNow() {
 
   const handleSubmit = (e) => {
     setIsSubmitting(true);
+    const idSpec = 0;
+    const size = localStorage.getItem("data_size");
+    const color = localStorage.getItem("data_color");
+    if (size && color && data.productSpecification) {
+      data.productSpecification.forEach(item => {
+        if (item.size === size && item.color === color) {
+          idSpec = item.id;
+        }
+      });
+    }
     const orderData = {
       note,
       customer: {
@@ -124,6 +135,9 @@ function BuyNow() {
           quantity: quantity,
           product: {
             id: data.id,
+          },
+          productSpecification: {
+            id: idSpec,
           },
         },
       ],
