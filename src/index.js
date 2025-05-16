@@ -4,8 +4,8 @@ import "./styles/index.scss";
 import App from "./views/App";
 import axios from "axios";
 import { HashRouter } from "react-router-dom";
-axios.defaults.baseURL = "http://localhost:8521/";
-// axios.defaults.baseURL = "https://kltnhk2023server-production.up.railway.app/";
+// axios.defaults.baseURL = "http://localhost:8521/";
+axios.defaults.baseURL = "https://kltn2025serverfashionshop-production.up.railway.app/";
 
 // Thêm CSS để sửa khoảng trống mênh mông
 const style = document.createElement('style');
