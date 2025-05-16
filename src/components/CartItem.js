@@ -22,9 +22,8 @@ const CartItem = (props) => {
   console.log(props);
   const [quantity, setQuantity] = useState(item.quantity);
   const [price, setPrice] = useState(item.quantity * item.product.price);
-  const [stockQuantity, setStockQuantity] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [outOfStock, setOutOfStock] = useState(false);
+  const [stockQuantity] = useState(null);
+  const [outOfStock] = useState(false);
 
   // Format giá theo định dạng Việt Nam
   const formatPrice = (price) => {
@@ -36,21 +35,6 @@ const CartItem = (props) => {
     setPrice(quantity * item.product.price);
   }, [quantity, item.product.price]);
 
-  // Hàm kiểm tra số lượng tồn kho
-  const updateCartItemQuantity = async (newQuantity) => {
-    try {
-      await axios.post("/api/v1/shoppingCartDetails/saveOrUpdate", {
-        id: item.id,
-        product: { id: item.product.id },
-        shoppingCart: { id: item.shoppingCart.id },
-        quantity: newQuantity,
-      });
-      props.updateCart();
-    } catch (error) {
-      console.error(error);
-      toast.error("Có lỗi xảy ra, vui lòng thử lại sau!");
-    }
-  };
   const handleQuantityItemPlus = async () => {
     // Kiểm tra tồn kho trước khi tăng số lượng
     if (stockQuantity !== null && quantity >= stockQuantity) {
@@ -160,7 +144,7 @@ const CartItem = (props) => {
       ? item.product.imageProducts[0].imageLink
       : "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-32.png";
 
-  if (loading) {
+  if (false) {
     return (
       <Box sx={{ p: 2, borderBottom: "1px solid #f0f0f0", opacity: 0.7 }}>
         <Typography variant="body2" sx={{ textAlign: "center" }}>

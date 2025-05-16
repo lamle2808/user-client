@@ -6,8 +6,6 @@ import {
   dataKids2,
   dataAccessories,
   dataAccessories2,
-  dataFashion,
-  dataFashion2,
 } from "../assets/action/Data";
 import { 
   aoThunData, 
@@ -18,13 +16,12 @@ import {
   phuKienData 
 } from "../assets/action/CategoryData";
 import { useEffect, useState, useRef } from "react";
-import { BoxMenu, TextMenu } from "../assets/style/Style";
+import { TextMenu } from "../assets/style/Style";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import "../styles/HoverMenu.scss";
 
 function HoverMenu({ hovered, setHovered, data }) {
   const [daa, setDaa] = useState("");
-  const [daas, setDaas] = useState("");
   const timerRef = useRef(null);
   
   // Xử lý khi rời khỏi menu với delay
@@ -56,7 +53,6 @@ function HoverMenu({ hovered, setHovered, data }) {
     switch (data) {
       case "1": // Tất cả quần áo -> dataWomen
         setDaa(dataWomen);
-        setDaas(dataMen); // Có thể kết hợp quần áo nam và nữ
         break;
       case "12,7,11": // Quần áo nữ
         setDaa(dataWomen);
@@ -66,14 +62,12 @@ function HoverMenu({ hovered, setHovered, data }) {
         break;
       case "5,6": // Quần áo trẻ em
         setDaa(dataKids);
-        setDaas(dataKids2);
         break;
       case "10": // Phụ kiện
         setDaa(phuKienData);
         break;
       case "3,2,4": // Túi xách, Giày dép
         setDaa(dataAccessories);
-        setDaas(dataAccessories2);
         break;
       // Thêm case mới cho các danh mục sản phẩm
       case "ao-thun":

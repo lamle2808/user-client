@@ -9,8 +9,6 @@ import {
   Typography,
   Chip,
   Tooltip,
-  Badge,
-  Divider,
   Paper,
 } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";

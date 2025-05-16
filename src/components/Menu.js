@@ -1,11 +1,7 @@
-import { List, ListItemIcon, ListItemText } from "@mui/material";
+import { List, ListItemText } from "@mui/material";
 import React, { useRef, useEffect } from "react";
 import "../styles/Menu.scss";
 import { useHistory } from "react-router-dom";
-
-import { Icon } from '@iconify/react';
-import WalletIcon from '@mui/icons-material/Wallet'; // Phụ kiện
-import LocalMallIcon from "@mui/icons-material/LocalMall"; // Túi xách, giày dép
 import { ListButton } from "../assets/style/Style";
 
 const Menu = ({ hovered, setHovered, setData }) => {

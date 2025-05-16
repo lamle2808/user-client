@@ -118,7 +118,7 @@ function Find() {
     }
 
     fetchData();
-  }, [id, sortData]);
+  }, [id, sortData, itemDetails, itemBrand]);
 
   const Itemas = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(2),

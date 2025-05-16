@@ -6,10 +6,9 @@ import { useAuth } from "../stores/AuthContext"; // Import useAuth từ context
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
-import { Avatar, Box, Button, Stack, Typography, Badge, InputAdornment } from "@mui/material";
+import { Avatar, Stack, Typography, Badge } from "@mui/material";
 import ListIcon from "@mui/icons-material/List";
 import SearchIcon from "@mui/icons-material/Search";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const Nav = () => {
