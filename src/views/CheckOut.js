@@ -89,8 +89,13 @@ const CheckOut = (props) => {
         product: {
           id: item.product.id,
         },
+        productSpecification: item.productSpecification 
+          ? { id: item.productSpecification.id }
+          : null
       })),
     };
+
+    console.log("Order data:", orderData);
 
     await axios
       .post(

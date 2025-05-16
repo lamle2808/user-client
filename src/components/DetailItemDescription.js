@@ -157,21 +157,31 @@ const DetailItemDescription = (props) => {
       toast.error("Vui lòng đăng nhập để mua hàng!");
       return;
     }
-    console.log(dataDes);
-    const matchedSpec = dataDes.loHang.product.specifications.find(
+    
+    // Tìm productSpecification dựa vào size và color đã chọn
+    const matchedSpec = stockType.find(
       (spec) => spec.size === selectedSize && spec.color === selectedColor
     );
-    console.log(matchedSpec);
+    
+    if (!matchedSpec) {
+      toast.error("Không tìm thấy thông số kỹ thuật cho sản phẩm này!");
+      return;
+    }
+
+    console.log("Đang thêm sản phẩm với specID:", matchedSpec.id);
+    
     axios
       .post("/api/v1/shoppingCartDetails/saveOrUpdate", {
-        product: { id: dataDes.id, productSpecifications: matchedSpec },
+        product: { id: dataDes.id },
+        productSpecification: { id: matchedSpec.id },
         shoppingCart: { id: dataUser.shoppingCart.id },
         quantity: quantity,
       })
       .then(function () {
         toast.success("Thêm vào giỏ hàng thành công");
       })
-      .catch(function () {
+      .catch(function (error) {
+        console.error("Lỗi khi thêm vào giỏ hàng:", error);
         toast.error("Có lỗi xảy ra, vui lòng thử lại sau!");
       });
   };
