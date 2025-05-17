@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 
 const FormCheckOut = ({ note, setNote }) => {
   const [user, setUser] = useState();
-  // const [note, setNote] = useState("");
 
   useEffect(() => {
     const data = localStorage.getItem("data");
     setUser(JSON.parse(data));
   }, []);
+
   if (!user) {
     return <div>Đang tải...</div>;
   }
+  
   return (
     <form className="needs-validation" noValidate>
       <div className="row g-3">

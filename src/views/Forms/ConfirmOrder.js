@@ -129,6 +129,8 @@ const ConfirmOrder = ({
                   <TableRow sx={{ backgroundColor: '#f9f9f9' }}>
                     <TableCell>Tên sản phẩm</TableCell>
                     <TableCell align="center">Số lượng</TableCell>
+                    <TableCell align="center">Màu sắc</TableCell>
+                    <TableCell align="center">Kích thước</TableCell>
                     <TableCell align="right">Đơn giá</TableCell>
                     <TableCell align="right">Thành tiền</TableCell>
                   </TableRow>
@@ -143,6 +145,12 @@ const ConfirmOrder = ({
                       </TableCell>
                       <TableCell align="center">
                         {item.quantity}
+                      </TableCell>
+                      <TableCell align="center">
+                        {item.productSpecification ? item.productSpecification.color : "Chưa chọn"}
+                      </TableCell>
+                      <TableCell align="center">
+                        {item.productSpecification ? item.productSpecification.size : "Chưa chọn"}
                       </TableCell>
                       <TableCell align="right">
                         {formatPrice(item.product.price)} đ

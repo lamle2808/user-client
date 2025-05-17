@@ -23,6 +23,9 @@ import {
   Chip,
   Tooltip,
   Alert,
+  MenuItem,
+  Select,
+  InputLabel,
 } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
@@ -58,6 +61,12 @@ function BuyNow() {
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [availableColors, setAvailableColors] = useState([]);
+  const [availableSizes, setAvailableSizes] = useState([]);
+  const [selectedSpecId, setSelectedSpecId] = useState(0);
+  const [productSpecs, setProductSpecs] = useState([]);
   
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -72,10 +81,64 @@ function BuyNow() {
     axios
       .get(`/api/v1/products/getById/${id}`)
       .then(function (response) {
-        console.log( response.data);
+        console.log("Dữ liệu sản phẩm:", response.data);
         setData(response.data);
         setImage(response.data.imageProducts[0].imageLink);
         setSale(response.data.sale?.discount || 0);
+        
+        if (response.data.productSpecifications && response.data.productSpecifications.length > 0) {
+          setProductSpecs(response.data.productSpecifications);
+          console.log("Thông số sản phẩm:", response.data.productSpecifications);
+          
+          // Lấy danh sách màu sắc duy nhất
+          const colors = [...new Set(response.data.productSpecifications
+            .map(spec => spec.color)
+            .filter(Boolean))];
+          
+          // Lấy danh sách kích thước duy nhất
+          const sizes = [...new Set(response.data.productSpecifications
+            .map(spec => spec.size)
+            .filter(Boolean))];
+            
+          console.log("Màu sắc có sẵn:", colors);
+          console.log("Kích thước có sẵn:", sizes);
+            
+          setAvailableColors(colors);
+          setAvailableSizes(sizes);
+          
+          // Lấy thông tin từ localStorage hoặc state
+          const colorFromState = history.location.state?.selectedColor;
+          const sizeFromState = history.location.state?.selectedSize;
+          const specIdFromState = history.location.state?.selectedSpecId;
+          
+          const colorFromStorage = localStorage.getItem("data_color");
+          const sizeFromStorage = localStorage.getItem("data_size");
+          const specIdFromStorage = localStorage.getItem("selected_spec_id");
+          
+          // Thiết lập giá trị từ thông tin đã lưu
+          const colorToSet = colorFromState || colorFromStorage;
+          const sizeToSet = sizeFromState || sizeFromStorage;
+          const specIdToSet = specIdFromState || specIdFromStorage;
+          
+          console.log("Thông tin đã lưu:", colorToSet, sizeToSet, specIdToSet);
+          
+          if (colorToSet && colors.includes(colorToSet)) {
+            setSelectedColor(colorToSet);
+          } else if (colors.length > 0) {
+            setSelectedColor(colors[0]);
+          }
+          
+          if (sizeToSet && sizes.includes(sizeToSet)) {
+            setSelectedSize(sizeToSet);
+          } else if (sizes.length > 0) {
+            setSelectedSize(sizes[0]);
+          }
+          
+          if (specIdToSet) {
+            setSelectedSpecId(Number(specIdToSet));
+          }
+        }
+        
         setLoading(false);
       })
       .catch(function (error) {
@@ -83,7 +146,34 @@ function BuyNow() {
         setLoading(false);
         toast.error("Không thể tải thông tin sản phẩm");
       });
-  }, [id]);
+  }, [id, history.location.state]);
+
+  useEffect(() => {
+    if (productSpecs && productSpecs.length > 0 && selectedColor && selectedSize) {
+      console.log("Đang tìm spec phù hợp cho:", selectedColor, selectedSize);
+      
+      const matchingSpec = productSpecs.find(spec => 
+        spec.color === selectedColor && 
+        spec.size === selectedSize
+      );
+      
+      console.log("Spec phù hợp:", matchingSpec);
+      
+      if (matchingSpec) {
+        setSelectedSpecId(matchingSpec.id);
+        localStorage.setItem("data_size", selectedSize);
+        localStorage.setItem("data_color", selectedColor);
+      }
+    }
+  }, [selectedColor, selectedSize, productSpecs]);
+
+  const handleColorChange = (event) => {
+    setSelectedColor(event.target.value);
+  };
+  
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
+  };
 
   const inputQuantity = (e) => {
     if (e > data.quantity || e < 0) {
@@ -111,17 +201,12 @@ function BuyNow() {
   };
 
   const handleSubmit = (e) => {
-    setIsSubmitting(true);
-    const idSpec = 0;
-    const size = localStorage.getItem("data_size");
-    const color = localStorage.getItem("data_color");
-    if (size && color && data.productSpecification) {
-      data.productSpecification.forEach(item => {
-        if (item.size === size && item.color === color) {
-          idSpec = item.id;
-        }
-      });
+    if (!selectedColor || !selectedSize) {
+      toast.error("Vui lòng chọn màu sắc và kích thước");
+      return;
     }
+    
+    setIsSubmitting(true);
     const orderData = {
       note,
       customer: {
@@ -137,11 +222,13 @@ function BuyNow() {
             id: data.id,
           },
           productSpecification: {
-            id: idSpec,
+            id: selectedSpecId,
           },
         },
       ],
     };
+    
+    console.log("Đang gửi đơn hàng:", orderData);
     
     axios
       .post(`/api/v1/orders/createNow`, orderData)
@@ -287,6 +374,48 @@ function BuyNow() {
                       ) : null}
                     </Box>
                     
+                    {availableColors.length > 0 && (
+                      <Box sx={{ mt: 2, mb: 2 }}>
+                        <FormControl fullWidth size="small" sx={{ mb: 1 }}>
+                          <InputLabel id="color-select-label">Màu sắc</InputLabel>
+                          <Select
+                            labelId="color-select-label"
+                            id="color-select"
+                            value={selectedColor}
+                            label="Màu sắc"
+                            onChange={handleColorChange}
+                          >
+                            {availableColors.map((color) => (
+                              <MenuItem key={color} value={color}>
+                                {color}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Box>
+                    )}
+                    
+                    {availableSizes.length > 0 && (
+                      <Box sx={{ mt: 2, mb: 2 }}>
+                        <FormControl fullWidth size="small" sx={{ mb: 1 }}>
+                          <InputLabel id="size-select-label">Kích thước</InputLabel>
+                          <Select
+                            labelId="size-select-label"
+                            id="size-select"
+                            value={selectedSize}
+                            label="Kích thước"
+                            onChange={handleSizeChange}
+                          >
+                            {availableSizes.map((size) => (
+                              <MenuItem key={size} value={size}>
+                                {size}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Box>
+                    )}
+                    
                     <Stack
                       direction="row"
                       sx={{ display: 'flex', alignItems: 'center', mt: 2 }}
@@ -431,6 +560,20 @@ function BuyNow() {
                       <Typography variant="body1">Phí vận chuyển</Typography>
                       <Typography variant="body1">
                         0 đ
+                      </Typography>
+                    </Box>
+                    
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography variant="body1">Màu sắc</Typography>
+                      <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+                        {selectedColor || "Chưa chọn"}
+                      </Typography>
+                    </Box>
+                    
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography variant="body1">Kích thước</Typography>
+                      <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+                        {selectedSize || "Chưa chọn"}
                       </Typography>
                     </Box>
                     

@@ -145,8 +145,26 @@ const DetailItemDescription = (props) => {
     }
     localStorage.setItem("data_size", selectedSize);
     localStorage.setItem("data_color", selectedColor);
+    
+    // Tìm productSpecification dựa vào size và color đã chọn
+    const matchedSpec = stockType.find(
+      (spec) => spec.size === selectedSize && spec.color === selectedColor
+    );
+    
+    if (matchedSpec) {
+      localStorage.setItem("selected_spec_id", matchedSpec.id);
+      console.log("Đã lưu thông tin spec:", matchedSpec.id, selectedSize, selectedColor);
+    }
+    
     const newPath = `/BuyNow/${props.data}`;
-    history.push(newPath);
+    history.push({
+      pathname: newPath,
+      state: { 
+        selectedColor: selectedColor, 
+        selectedSize: selectedSize,
+        selectedSpecId: matchedSpec ? matchedSpec.id : null
+      }
+    });
   };
 
   const handleAddToCart = () => {

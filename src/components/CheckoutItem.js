@@ -7,6 +7,16 @@ const CheckoutItem = (props) => {
       <td>
         <b>{props.data.product.productName}</b>
         <p>{props.data.product.price} VND</p>
+        {props.data.productSpecification && (
+          <>
+            <p className="text-muted">
+              Màu: {props.data.productSpecification.color || "N/A"}
+            </p>
+            <p className="text-muted">
+              Size: {props.data.productSpecification.size || "N/A"}
+            </p>
+          </>
+        )}
       </td>
       <td>
         {
