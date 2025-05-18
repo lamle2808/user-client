@@ -31,7 +31,7 @@ const CheckOut = (props) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  
+
   useEffect(() => {
     setCartId(props.location.state.listCheckout);
   }, [props.location.state.listCheckout]);
@@ -41,7 +41,7 @@ const CheckOut = (props) => {
     const data = localStorage.getItem("data");
     setUser(JSON.parse(data));
   }, []);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       const tempCart = await Promise.all(
@@ -53,7 +53,7 @@ const CheckOut = (props) => {
       // Lọc ra những giá trị không null
       const filteredCart = tempCart.filter((item) => item !== null);
       setCart(filteredCart);
-      
+
       // Tổng hợp tất cả các productSpecification từ các sản phẩm
       let allSpecs = [];
       filteredCart.forEach(item => {
@@ -62,7 +62,7 @@ const CheckOut = (props) => {
           allSpecs = [...allSpecs, ...item.product.productSpecifications];
         }
       });
-      
+
       console.log("Danh sách tất cả thông số sản phẩm:", allSpecs);
     };
 
@@ -92,54 +92,62 @@ const CheckOut = (props) => {
   // =========tạo order
   const handleConfirm = async () => {
     setIsSubmitting(true);
-    
+
     // Log để kiểm tra dữ liệu giỏ hàng
     console.log("Thông tin giỏ hàng trước khi gửi:", cart);
-    
+
     // Tạo dữ liệu đơn hàng với đầy đủ thông tin
     const orderData = {
       note,
       customer: {
-        id: user.id,
+        id: user.id, // Replace with actual customer ID
       },
       paymentType: value,
       statusPayment: value === "Thanh toán khi nhận hàng" ? 0 : 1,
-      orderDetails: cart.map((item) => {
-        console.log("Chi tiết sản phẩm:", item);
-        
-        return {
-          quantity: item.quantity,
-          product: {
-            id: item.product.id,
-          },
-          // Bổ sung lại productSpecification nhưng với định dạng khác
-          productSpecifications: item.productSpecification ? {
-            id: item.productSpecification.id,
-            color: item.productSpecification.color,
-            size: item.productSpecification.size
-          } : null
-        };
-      }),
+      orderDetails: cart.map((item) => ({
+        quantity: item.quantity,
+        product: {
+          id: item.product.id,
+        },
+        productSpecification: item.productSpecification ? {
+          id: item.productSpecification.id,
+          color: item.productSpecification.color,
+          size: item.productSpecification.size
+        } : null
+      })),
     };
 
     console.log("Đang gửi đơn hàng với thông tin đầy đủ:", orderData);
 
-    try {
-      // Thử gọi API với dữ liệu đầy đủ
-      const response = await axios.post(
+    await axios
+      .post(
         `/api/v1/orders/saveOrUpdate/${dataUser.shoppingCart.id}`,
         orderData
-      );
-      
-      console.log("Đơn hàng đã được tạo:", response.data);
-      toast.success(`Bạn đã tạo đơn hàng thành công`);
-      history.push("/SuccessOrder");
-    } catch (error) {
-      console.log("Lỗi khi tạo đơn hàng:", error);
-      // Vẫn chuyển hướng đến trang thành công ngay cả khi API lỗi
-      toast.success(`Đã xử lý đơn hàng của bạn`);
-      history.push("/SuccessOrder");
-    }
+      )
+      .then((res) => {
+        console.log("đơn hàng đã được tạo:", res.data);
+        if (value === "Thanh toán khi nhận hàng") {
+          toast.success(`bạn đã tạo đơn hàng thành công`);
+          history.push("/SuccessOrder");
+        } else {
+          axios
+            .post("/api/v1/payments/paymentWithVNPAY", {
+              idOrder: res.data.id,
+              price: total,
+            })
+            .then(function (response) {
+              window.open(response.data.url, "_self");
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      })
+      .catch((error) => {
+        // Xử lý khi có lỗi xảy ra
+        toast.error("Có lỗi xảy ra, vui lòng thử lại sau");
+        console.log(error);
+      });
   };
 
   // ====
@@ -162,7 +170,7 @@ const CheckOut = (props) => {
       return null;
     }
   };
-  
+
   const handleCheckOut = () => {
     setPopupVisible(true);
   };
@@ -176,9 +184,9 @@ const CheckOut = (props) => {
               <div className="col-md-7 col-lg-7">
                 <h4 className="mb-3">Tiến hành thanh toán</h4>
                 <a href="home">Thay đổi thông tin</a>
-                <FormCheckOut 
-                  note={note} 
-                  setNote={setNote} 
+                <FormCheckOut
+                  note={note}
+                  setNote={setNote}
                 />
               </div>
               <div className="col-md-5 col-lg-5">
@@ -217,7 +225,7 @@ const CheckOut = (props) => {
                 </div>
               </div>
             </div>
-            
+
             <FormControl>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 Phương thức thanh toán
