@@ -1,39 +1,60 @@
 .menu-container {
   position: relative;
-  width: 250px;
-  background-color: white;
+  width: 100%;
+  max-width: 100%;
+  background-color: #f8f5f2;
   border-radius: 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   z-index: 25;
+  margin-bottom: 0;
+  padding: 10px 0;
+  overflow-x: hidden;
 }
 
 .menu-list {
   padding: 0 !important;
   width: 100%;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px !important;
 }
 
 .menu-item {
   position: relative;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  flex: 0 0 auto;
+  margin: 0 12px;
+  border-radius: 4px;
+  overflow: hidden;
   
   &:hover {
-    background-color: #f5f5f5;
+    background-color: rgba(225, 190, 165, 0.15);
+    transform: translateY(-2px);
+    
+    .MuiListItemText-root {
+      color: #c86e52;
+    }
   }
   
-  // Thêm mũi tên sang phải khi hover vào menu item
-  &:hover::after {
+  // Thay đổi mũi tên - thành gạch dưới
+  &:after {
     content: '';
     position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid #f5f5f5;
-    z-index: 31;
-    display: block;
+    height: 2px;
+    background-color: #c86e52;
+    transition: width 0.3s ease;
+  }
+  
+  &:hover:after {
+    width: 80%;
   }
 }
 
@@ -41,50 +62,123 @@
   padding: 0 !important;
 }
 
-// Hiệu ứng khi hover vào các menu item
-.menu-item:hover > .MuiListItemText-root {
-  transform: translateX(5px);
-  transition: transform 0.2s ease-in-out;
-}
-
 // Style cho menu item text
-.MuiListItemText-root {
-  transition: transform 0.2s ease-in-out;
+.menu-item .MuiListItemText-root {
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #5a5149;
+  
+  .MuiTypography-body1 {
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
 }
 
 // Menu item đang được chọn
 .menu-item-active {
-  background-color: #f0f7ff;
+  background-color: #e1bea5 !important;
   
   .MuiListItemText-root {
-    color: #1890ff;
+    color: #ffffff !important;
     font-weight: 600;
   }
   
-  // Mũi tên sang phải khi menu item active
-  &::after {
+  &:hover {
+    background-color: #d1a38e !important;
+    transform: translateY(-2px);
+    
+    .MuiListItemText-root {
+      color: #ffffff !important;
+    }
+  }
+  
+  // Gạch dưới khi menu item active
+  &:after {
     content: '';
     position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid #f0f7ff;
-    z-index: 31;
-    display: block;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background-color: #ffffff;
+  }
+}
+
+// Style responsive cho menu
+@media (min-width: 1200px) {
+  .menu-list {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .menu-list {
+    max-width: 100%;
+    padding: 0 15px !important;
   }
 }
 
 @media (max-width: 992px) {
-  .menu-container {
-    width: 100%;
+  .menu-list {
+    flex-wrap: wrap;
+    padding: 5px 15px !important;
+    max-width: 100%;
   }
   
-  .menu-item:hover::after,
-  .menu-item-active::after {
-    display: none;
+  .menu-item {
+    flex: 0 0 auto;
+    margin: 5px;
+    padding: 10px 15px !important;
+    border-radius: 20px;
+    background-color: #f5f0eb;
+    
+    &:hover {
+      background-color: #f0e5df;
+    }
+    
+    &:after {
+      display: none;
+    }
+  }
+  
+  .menu-item-active {
+    background-color: #e1bea5 !important;
+    
+    &:after {
+      display: none;
+    }
+    
+    &:hover {
+      background-color: #d1a38e !important;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .menu-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .menu-list {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 10px 5px !important;
+    scrollbar-width: none;
+    max-width: 100%;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  .menu-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 } 

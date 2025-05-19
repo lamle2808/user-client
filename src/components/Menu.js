@@ -13,6 +13,14 @@ const Menu = ({ hovered, setHovered, setData }) => {
   const timerRef = useRef(null);
   const activeCategory = useRef(null);
   
+  // Style chung cho text
+  const textStyle = {
+    fontSize: "15px", 
+    fontWeight: 500, 
+    letterSpacing: "0.8px", 
+    textTransform: "uppercase"
+  };
+  
   // Thêm delay khi rời khỏi menu chính
   const handleMouseLeave = () => {
     timerRef.current = setTimeout(() => {
@@ -29,12 +37,6 @@ const Menu = ({ hovered, setHovered, setData }) => {
     activeCategory.current = category;
     setHovered(true);
     setData(category);
-    
-    // Đảm bảo menu active được cuộn vào view nếu cần
-    const menuItem = document.querySelector(`.menu-item[data-category="${category}"]`);
-    if (menuItem) {
-      menuItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
   };
   
   // Hàm xử lý khi click vào danh mục
@@ -63,18 +65,12 @@ const Menu = ({ hovered, setHovered, setData }) => {
           onMouseEnter={() => handleMouseEnter("ao-thun")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleCategoryClick("ao-thun", "Áo thun")}
-          style={{ width: "100%", padding: "14px 24px", cursor: "pointer" }}
+          style={{ padding: "12px 16px", cursor: "pointer" }}
           data-category="ao-thun"
         >
           <ListItemText 
             primary="Áo Thun" 
-            style={{ 
-              color: "#222", 
-              fontSize: "16px", 
-              fontWeight: 600, 
-              letterSpacing: 0.2, 
-              padding: 0 
-            }} 
+            primaryTypographyProps={{ style: textStyle }}
           />
         </ListButton>
 
@@ -83,18 +79,12 @@ const Menu = ({ hovered, setHovered, setData }) => {
           onMouseEnter={() => handleMouseEnter("ao-khoac")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleCategoryClick("ao-khoac", "Áo khoác")}
-          style={{ width: "100%", padding: "14px 24px", cursor: "pointer" }}
+          style={{ padding: "12px 16px", cursor: "pointer" }}
           data-category="ao-khoac"
         >
           <ListItemText 
             primary="Áo Khoác" 
-            style={{ 
-              color: "#222", 
-              fontSize: "16px", 
-              fontWeight: 600, 
-              letterSpacing: 0.2, 
-              padding: 0 
-            }} 
+            primaryTypographyProps={{ style: textStyle }}
           />
         </ListButton>
 
@@ -103,18 +93,12 @@ const Menu = ({ hovered, setHovered, setData }) => {
           onMouseEnter={() => handleMouseEnter("ao-so-mi")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleCategoryClick("ao-so-mi", "Áo sơ mi")}
-          style={{ width: "100%", padding: "14px 24px", cursor: "pointer" }}
+          style={{ padding: "12px 16px", cursor: "pointer" }}
           data-category="ao-so-mi"
         >
           <ListItemText 
             primary="Áo Sơ Mi" 
-            style={{ 
-              color: "#222", 
-              fontSize: "16px", 
-              fontWeight: 600, 
-              letterSpacing: 0.2, 
-              padding: 0 
-            }} 
+            primaryTypographyProps={{ style: textStyle }}
           />
         </ListButton>
 
@@ -123,18 +107,12 @@ const Menu = ({ hovered, setHovered, setData }) => {
           onMouseEnter={() => handleMouseEnter("quan-short")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleCategoryClick("quan-short", "Quần short")}
-          style={{ width: "100%", padding: "14px 24px", cursor: "pointer" }}
+          style={{ padding: "12px 16px", cursor: "pointer" }}
           data-category="quan-short"
         >
           <ListItemText 
             primary="Quần Short" 
-            style={{ 
-              color: "#222", 
-              fontSize: "16px", 
-              fontWeight: 600, 
-              letterSpacing: 0.2, 
-              padding: 0 
-            }} 
+            primaryTypographyProps={{ style: textStyle }}
           />
         </ListButton>
 
@@ -143,18 +121,12 @@ const Menu = ({ hovered, setHovered, setData }) => {
           onMouseEnter={() => handleMouseEnter("quan-dai")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleCategoryClick("quan-dai", "Quần dài")}
-          style={{ width: "100%", padding: "14px 24px", cursor: "pointer" }}
+          style={{ padding: "12px 16px", cursor: "pointer" }}
           data-category="quan-dai"
         >
           <ListItemText 
             primary="Quần Dài" 
-            style={{ 
-              color: "#222", 
-              fontSize: "16px", 
-              fontWeight: 600, 
-              letterSpacing: 0.2, 
-              padding: 0 
-            }} 
+            primaryTypographyProps={{ style: textStyle }}
           />
         </ListButton>
 
@@ -163,18 +135,12 @@ const Menu = ({ hovered, setHovered, setData }) => {
           onMouseEnter={() => handleMouseEnter("10")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleCategoryClick("10", "Phụ kiện")}
-          style={{ width: "100%", padding: "14px 24px", cursor: "pointer" }}
+          style={{ padding: "12px 16px", cursor: "pointer" }}
           data-category="10"
         >
           <ListItemText 
             primary="Phụ kiện" 
-            style={{ 
-              color: "#222", 
-              fontSize: "16px", 
-              fontWeight: 600, 
-              letterSpacing: 0.2, 
-              padding: 0 
-            }} 
+            primaryTypographyProps={{ style: textStyle }}
           />
         </ListButton>
       </List>

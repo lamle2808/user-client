@@ -2,26 +2,30 @@ import DetailImg from "./DetailImg";
 import "../styles/DetailItem.scss";
 import { withRouter } from "react-router-dom";
 import DetailItemDescription from "./DetailItemDescription";
-
 import IntroItem from "./IntroItem";
 import ListItem from "./ListItem";
+import { Box, Container, Paper } from "@mui/material";
 
 const DetailItem = (props) => {
   return (
-    <div className="ContainerDetail container-fluid shadow-sm p-3 mb-5 bg-white rounded">
-      <div className="row">
-        <DetailImg data={props.match.params.id} />
-
-        <DetailItemDescription data={props.match.params.id} />
-      </div>
-
-      <div className="row mt-2">
-        <IntroItem data={props.match.params.id} />
-      </div>
-      <div className="row mt-2">
+    <div className="ContainerDetail">
+      {/* Phần thông tin chính của sản phẩm */}
+      <Paper elevation={2} className="product-main-container shadow-sm mb-4">
+        <div className="product-main-row">
+          <DetailImg data={props.match.params.id} />
+          <DetailItemDescription data={props.match.params.id} />
+        </div>
+      </Paper>
+      
+      {/* Phần mô tả sản phẩm */}
+      <IntroItem data={props.match.params.id} />
+      
+      {/* Phần sản phẩm đề xuất */}
+      <Box className="product-recommendations">
         <ListItem />
-      </div>
+      </Box>
     </div>
   );
 };
+
 export default withRouter(DetailItem);

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import "../styles/DetailImg.scss";
 import { useEffect } from "react";
 import axios from "axios";
+
 const DetailImg = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [listImg, setListImg] = useState([]);
@@ -47,6 +48,7 @@ const DetailImg = (props) => {
       });
     }
   };
+
   const preBtn = () => {
     if (activeIndex > 0) {
       setActiveIndex(activeIndex - 1);
@@ -59,43 +61,37 @@ const DetailImg = (props) => {
       });
     }
   };
+
   return (
     <div className="detailItemContainer">
-      <div className="detailImg">
-        <img src={activeImg} alt="item" />
-        <div className="divChild">
-          <button className="btnPre" onClick={() => nextBtn()}>
-            &#10095;
-          </button>
-
-          <button
-            className="btnNext"
-            onClick={() => {
-              preBtn();
-            }}
-          >
+      <div className="product-image-container">
+        <div className="main-image">
+          <button className="nav-btn nav-btn-left" onClick={preBtn}>
             &#10094;
           </button>
-
-          <ul className="itemChild" ref={imageListRef}>
+          <img src={activeImg} alt="product" />
+          <button className="nav-btn nav-btn-right" onClick={nextBtn}>
+            &#10095;
+          </button>
+        </div>
+        
+        <div className="thumbnails-container">
+          <ul className="thumbnails-list" ref={imageListRef}>
             {listImg.length > 0 &&
-              listImg.map((item, index) => {
-                return (
-                  <li
-                    key={index}
-                    className={`img ${
-                      activeIndex === index ? "activeImg" : ""
-                    }`}
-                    onClick={(event) => handleActive(index, event)}
-                  >
-                    <img src={item.imageLink} alt="item" />
-                  </li>
-                );
-              })}
+              listImg.map((item, index) => (
+                <li
+                  key={index}
+                  className={`thumb-item ${activeIndex === index ? "active-thumb" : ""}`}
+                  onClick={(event) => handleActive(index, event)}
+                >
+                  <img src={item.imageLink} alt={`thumbnail-${index}`} />
+                </li>
+              ))}
           </ul>
         </div>
       </div>
     </div>
   );
 };
+
 export default DetailImg;

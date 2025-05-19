@@ -1,49 +1,162 @@
+// Modern Home Styles
 .home-container {
   position: relative;
   width: 100%;
   padding: 0;
-  margin: 0;
-  overflow: visible;
-  max-width: 1400px;
   margin: 0 auto;
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+  overflow: visible;
+  max-width: 100%;
+  background-color: #f8f5f2;
+  
+  @media (min-width: 1200px) {
+    max-width: 100%;
+  }
+  
+  @media (max-width: 1199px) {
+    max-width: 100%;
+  }
 }
 
-.banner-menu-container {
-  display: flex;
-  margin-top: 0;
-  padding-top: 0;
+// Top Menu Container
+.top-menu-container {
   position: relative;
   width: 100%;
+  margin-bottom: 0;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+  z-index: 25;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   
-  .menu-section {
-    flex: 0 0 250px;
+  .menu-wrapper {
     position: relative;
-    z-index: 25;
+    width: 100%;
+    z-index: 20;
+    max-width: 100%;
+    margin: 0 auto;
     
-    .menu-wrapper {
-      position: relative;
+    @media (min-width: 1200px) {
+      max-width: 100%;
+      padding: 0 15px;
     }
-  }
-  
-  .main-slider-container {
-    flex: 1;
-    padding-left: 30px;
   }
 }
 
-.menu-section {
-  width: 20%;
+// Banner Container
+.banner-container {
   position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+// Main Slider Container
+.main-slider-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  
+  // Thêm class cho hình nền động
+  &.slide-bg-0, &.slide-bg-1, &.slide-bg-2 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+  }
+  
+  .main-slider-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    padding: 40px;
+    color: white;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-in-out;
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .main-slider-title {
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      line-height: 1.2;
+      letter-spacing: 2px;
+      max-width: 80%;
+      
+      &:after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 2px;
+        background: #fff;
+        margin: 15px 0 0;
+        border-radius: 2px;
+      }
+    }
+    
+    .main-slider-price-container {
+      margin: 20px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      
+      .price-before {
+        font-size: 16px;
+        opacity: 0.9;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .price-current {
+        font-size: 28px;
+        font-weight: 600;
+        color: #e1bea5;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
+
+// Menu Section Styles
+.menu-section {
   display: flex;
   flex-direction: column;
   background-color: #fff;
   padding: 0;
   z-index: 20;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.03);
-  min-width: 220px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   overflow: visible !important;
+  width: 100%;
 }
 
 .menu-wrapper {
@@ -56,191 +169,220 @@
 .hover-menu-container {
   position: absolute;
   top: 0;
-  left: 250px;
+  left: 0;
   z-index: 30;
-  height: 100%;
+  width: 100%;
   display: block;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-// Fix cho slider
-.slider.container-fluid {
-  overflow: visible !important;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0;
-}
-
-h1.text-center {
-  margin: 30px 0;
-  position: relative;
-  font-size: 28px;
-  font-weight: 600;
-  color: #333;
-  text-transform: capitalize;
-  clear: both;
-  
-  &:after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background-color: #1890ff;
-    margin: 15px auto 0;
-  }
-}
-
-.section-title {
-  position: relative;
-  margin: 40px 0 20px;
-  text-align: center;
-  clear: both;
-  display: block;
-  width: 100%;
-  overflow: visible;
-}
-
-// Các tính năng mới như hình trên
+// Features Container
 .features-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 30px auto;
-  max-width: 1200px;
-  padding: 0 15px;
-}
-
-.feature-item {
-  flex: 1;
-  text-align: center;
-  padding: 20px 15px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin: 0 10px;
+  margin: 40px auto;
+  padding: 0 20px;
+  width: 100%;
   
-  h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 10px 0 5px;
-    color: #333;
-  }
-  
-  p {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
-  }
-}
-
-// Banner khuyến mãi
-.promo-banner {
-  background-color: #0c8fc4;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin: 20px auto;
-  max-width: 1200px;
-  border-radius: 8px;
-  position: relative;
-  
-  h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0;
-    text-transform: uppercase;
-  }
-  
-  .btn-buy-now {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: white;
-    color: #0c8fc4;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 15px;
-    font-weight: 600;
+  .feature-item {
+    flex: 1;
+    min-width: 220px;
+    margin: 10px;
+    padding: 25px 15px;
+    text-align: center;
+    background-color: #faf7f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     transition: all 0.3s ease;
     
     &:hover {
-      background-color: #f5f5f5;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    
+    svg {
+      color: #c86e52 !important;
+      font-size: 32px !important;
+      margin-bottom: 15px;
+    }
+    
+    h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #5a5149;
+      font-weight: 600;
+    }
+    
+    p {
+      font-size: 14px;
+      color: #8a817c;
+      margin: 0;
     }
   }
 }
 
-// Danh mục nổi bật
+// Promo Banner
+.promo-banner {
+  margin: 40px auto;
+  padding: 40px 20px;
+  background: linear-gradient(120deg, #e1bea5 0%, #d1a38e 100%);
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(209, 163, 142, 0.2);
+  width: 100%;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+  
+  h3 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .btn-buy-now {
+    background-color: #fff;
+    color: #c86e52;
+    border: none;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      background-color: #f8f5f2;
+    }
+  }
+}
+
+// Section Title
+.section-title {
+  text-align: center;
+  margin: 50px auto 30px;
+  width: 100%;
+  
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #5a5149;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #e1bea5, #d1a38e, #c86e52);
+      border-radius: 3px;
+    }
+  }
+}
+
+// Category Section
 .category-section {
-  margin: 30px auto;
+  margin: 60px auto;
   padding: 0 15px;
   max-width: 1200px;
   
   h2 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     position: relative;
-    padding-left: 15px;
+    padding-left: 20px;
     
     &:before {
       content: '';
       position: absolute;
       left: 0;
-      top: 0;
-      height: 100%;
-      width: 4px;
-      background-color: #0c8fc4;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 70%;
+      width: 5px;
+      background: linear-gradient(to bottom, #2962ff, #3d5afe);
+      border-radius: 3px;
     }
   }
   
   .category-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    gap: 30px;
     
     .category-card {
-      width: calc(25% - 15px);
+      width: calc(25% - 23px);
       text-decoration: none;
       color: inherit;
-      border-radius: 8px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(209, 163, 142, 0.10);
+      border: 1.5px solid #f5e1d6;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
       
       &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        
-        .category-image {
-          transform: scale(1.05);
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 10px 32px rgba(209, 163, 142, 0.18);
+        border: 1.5px solid #e1bea5;
+        .category-name {
+          background: #ffe0c1;
+          color: #a05a2c;
         }
       }
       
       .category-image-container {
         width: 100%;
-        height: 200px;
+        height: 220px;
         overflow: hidden;
-        
         .category-image {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.3s ease;
+          border-radius: 18px 18px 0 0;
+          transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
       }
       
       .category-name {
-        padding: 15px;
+        padding: 16px 0 14px 0;
         text-align: center;
-        background-color: #0c8fc4;
-        
+        background: #f5e1d6;
+        color: #a05a2c;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 0 0 18px 18px;
+        letter-spacing: 0.5px;
+        transition: background 0.2s, color 0.2s;
         h3 {
           margin: 0;
-          color: white;
+          color: inherit;
           font-size: 18px;
           font-weight: 600;
         }
@@ -249,209 +391,218 @@ h1.text-center {
   }
 }
 
-// Responsive
+// Newsletter Section
+.newsletter-section {
+  margin: 80px 0;
+  padding: 48px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #2962ff, #3d5afe);
+    opacity: 0.05;
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+  }
+  
+  h4 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #666;
+    max-width: 80%;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    max-width: 100%;
+    
+    input {
+      flex: 1;
+      height: 50px;
+      border: 1px solid #e0e0e0;
+      border-radius: 25px 0 0 25px;
+      padding: 0 24px;
+      font-size: 16px;
+      outline: none;
+      
+      &:focus {
+        border-color: #2962ff;
+        box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.1);
+      }
+    }
+    
+    button {
+      height: 50px;
+      padding: 0 32px;
+      background: linear-gradient(to right, #2962ff, #3d5afe);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: linear-gradient(to right, #1c54e9, #2f4efe);
+        box-shadow: 0 5px 15px rgba(41, 98, 255, 0.2);
+      }
+      
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}
+
+// Responsive styles
 @media (max-width: 992px) {
-  .banner-menu-container {
-    flex-direction: column;
+  .main-slider-container {
+    min-height: 350px;
+    
+    .main-slider-content {
+      .main-slider-title {
+        font-size: 28px;
+        max-width: 100%;
+      }
+      
+      .main-slider-price-container {
+        .price-current {
+          font-size: 24px;
+        }
+      }
+    }
   }
-
-  .menu-section {
-    width: 100%;
-    margin-bottom: 0;
+  
+  .features-container .feature-item {
+    min-width: 150px;
   }
+}
 
-  .menu-wrapper {
-    width: 100%;
+@media (max-width: 768px) {
+  .main-slider-container {
+    min-height: 300px;
   }
   
   .features-container {
     flex-wrap: wrap;
-  }
-  
-  .feature-item {
-    flex: 0 0 calc(50% - 20px);
-    margin-bottom: 20px;
-  }
-  
-  .category-grid .category-card {
-    width: calc(50% - 10px);
-  }
-  
-  .main-slider-container {
-    width: 100% !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .banner-menu-container {
-    gap: 0;
-  }
-  
-  .section-title h1 {
-    font-size: 24px;
-  }
-  
-  .promo-banner {
-    padding: 10px 15px;
     
-    h3 {
-      font-size: 18px;
-    }
-    
-    .btn-buy-now {
-      position: static;
-      transform: none;
-      margin-top: 10px;
-      display: inline-block;
+    .feature-item {
+      flex: 0 0 calc(50% - 20px);
+      margin-bottom: 20px;
     }
   }
   
-  .category-grid .category-card {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .feature-item {
-    flex: 0 0 100%;
-    margin: 0 0 15px;
-  }
-}
-
-.main-slider-container {
-  width: 80%;
-  height: 350px;
-  background-color: #f5f5f5;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  overflow: hidden;
-  position: relative;
-}
-
-.main-slider-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.main-slider-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.main-slider-price-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.price-before {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.price-current {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #FFB700;
-  margin: 0;
-}
-
-.slider-navigation {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0 30px;
-  
-  button {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #999;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      color: #333;
-    }
-  }
-}
-
-@media (max-width: 992px) {
-  .main-slider-container {
-    width: 100%;
-    height: 300px;
-  }
-  
-  .main-slider-title {
-    font-size: 2rem;
-  }
-  
-  .price-current {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-slider-title {
-    font-size: 1.8rem;
-  }
-  
-  .price-current {
-    font-size: 2.5rem;
+  .promo-banner h3 {
+    font-size: 22px;
   }
 }
 
 @media (max-width: 576px) {
   .main-slider-container {
-    height: 250px;
+    min-height: 250px;
+    
+    .main-slider-content {
+      padding: 20px;
+      
+      .main-slider-title {
+        font-size: 20px;
+      }
+      
+      .main-slider-price-container .price-current {
+        font-size: 20px;
+      }
+      
+      .view-more-btn {
+        font-size: 11px;
+        padding: 8px 16px;
+      }
+    }
   }
   
-  .main-slider-title {
-    font-size: 1.5rem;
-  }
-  
-  .price-before {
-    font-size: 1rem;
-  }
-  
-  .price-current {
-    font-size: 2rem;
+  .features-container .feature-item {
+    flex: 0 0 100%;
   }
 }
 
-// Fix lỗi trùng lặp menu
-.menu-container:nth-of-type(n+2) {
-  display: none !important;
+// Responsive styles for newsletter
+@media (max-width: 768px) {
+  .newsletter-section {
+    padding: 32px 24px;
+    
+    h4 {
+      font-size: 24px;
+    }
+    
+    p {
+      max-width: 100%;
+    }
+    
+    .newsletter-form {
+      flex-direction: column;
+      
+      input {
+        border-radius: 25px;
+        margin-bottom: 16px;
+      }
+      
+      button {
+        border-radius: 25px;
+        width: 100%;
+      }
+    }
+  }
 }
 
-// CSS cho cầu nối giữa menu và hover menu
-.menu-bridge {
-  position: absolute;
-  background-color: transparent;
-  z-index: 999;
-  pointer-events: auto !important;
+// Thêm style cho container chứa nút điều hướng
+.slider-navigation-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background-color: #f8f5f2;
   
-  &:hover {
-    ~ .hover-menu-container {
-      display: block !important;
-      opacity: 1 !important;
-      visibility: visible !important;
+  .slider-navigation {
+    display: flex;
+    gap: 16px;
+    
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(200, 110, 82, 0.1);
+      border: 1px solid rgba(200, 110, 82, 0.3);
+      color: #c86e52;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        background: rgba(200, 110, 82, 0.2);
+        transform: scale(1.05);
+      }
+      
+      &:active {
+        transform: scale(0.95);
+      }
     }
   }
 } 

@@ -1,5 +1,6 @@
 // import Address from "./Address";
 import { useEffect, useState } from "react";
+import "../../styles/CheckOut.scss";
 
 const FormCheckOut = ({ note, setNote }) => {
   const [user, setUser] = useState();
@@ -10,11 +11,11 @@ const FormCheckOut = ({ note, setNote }) => {
   }, []);
 
   if (!user) {
-    return <div>Đang tải...</div>;
+    return <div className="loading-indicator">Đang tải...</div>;
   }
   
   return (
-    <form className="needs-validation" noValidate>
+    <form className="checkout-form needs-validation" noValidate>
       <div className="row g-3">
         <div className="col-sm-12">
           <label htmlFor="firstName" className="form-label">
@@ -26,10 +27,10 @@ const FormCheckOut = ({ note, setNote }) => {
             id="name"
             placeholder=""
             disabled
-            value={`${user.lastName} ${user.firstName}  `}
+            value={`${user.lastName} ${user.firstName}`}
             required
           />
-          <div className="invalid-feedback">Valid first name is required.</div>
+          <div className="invalid-feedback">Vui lòng nhập tên người nhận.</div>
         </div>
 
         <div className="col-12">
@@ -41,7 +42,7 @@ const FormCheckOut = ({ note, setNote }) => {
             className="form-control"
             id="phoneNumber"
             disabled
-            value={`${user.phone}  `}
+            value={user.phone}
             required
           />
           <div className="invalid-feedback">
@@ -59,7 +60,7 @@ const FormCheckOut = ({ note, setNote }) => {
             className="form-control"
             id="address"
             disabled
-            value={`${user.address}  `}
+            value={user.address}
             placeholder=""
             required
           />
@@ -73,11 +74,10 @@ const FormCheckOut = ({ note, setNote }) => {
           <input
             type="text"
             className="form-control"
-            id="address"
+            id="note"
             onChange={(e) => setNote(e.target.value)}
-            value={`${note}`}
-            placeholder=""
-            required
+            value={note || ""}
+            placeholder="Nhập ghi chú cho đơn hàng (nếu có)"
           />
         </div>
       </div>
@@ -86,4 +86,5 @@ const FormCheckOut = ({ note, setNote }) => {
     </form>
   );
 };
+
 export default FormCheckOut;

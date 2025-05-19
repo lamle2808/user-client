@@ -135,7 +135,14 @@ function HoverMenu({ hovered, setHovered, data }) {
     >
       <div className="hover-bridge"></div>
       <Stack className="hover-menu-stack">
-        {daa && daa.map(renderCategoryColumn)}
+        <div className="hover-menu-categories">
+          {daa && daa.map(renderCategoryColumn)}
+        </div>
+        {daas && (
+          <div className="hover-menu-categories">
+            {daas.map(renderCategoryColumn)}
+          </div>
+        )}
       </Stack>
     </Paper>
   );

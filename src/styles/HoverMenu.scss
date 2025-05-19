@@ -1,22 +1,23 @@
 .hover-menu-paper {
   position: absolute;
-  width: 500px;
+  width: 100%;
   display: flex;
-  border-radius: 0;
-  background-color: white;
+  border-radius: 0 0 12px 12px;
+  background-color: #faf7f4;
   z-index: 30;
   margin-left: 0;
   height: auto;
-  min-height: 350px;
+  min-height: 250px;
   margin-top: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
-  top: 0;
-  left: 250px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  top: 100%;
+  left: 0;
   opacity: 1;
   visibility: visible;
-  animation: fadeIn 0.2s ease-in-out;
-  border: 1px solid #f0f0f0;
+  animation: fadeInDown 0.2s ease-in-out;
+  border-top: 3px solid #e1bea5;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 30px 15px;
 }
 
 .hover-menu-paper.visible {
@@ -29,23 +30,23 @@
   visibility: hidden;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 .hover-bridge {
   position: absolute;
-  width: 20px;
-  height: 100%;
-  top: 0;
-  left: -20px;
+  width: 100%;
+  height: 20px;
+  top: -20px;
+  left: 0;
   background-color: transparent;
   z-index: 25;
 }
@@ -53,66 +54,131 @@
 .hover-menu-stack {
   display: flex;
   flex-direction: column;
-  padding: 15px;
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-.hover-menu-category-column {
-  margin-bottom: 15px;
+/* Định dạng các nhóm danh mục chính */
+.hover-menu-categories {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* Mỗi nhóm danh mục */
+.hover-menu-category-column {
+  flex: 0 0 33.33%;
+  padding: 0 20px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  position: relative;
+  
+  &:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(200, 110, 82, 0.2), transparent);
+  }
 }
 
 .hover-menu-category-title {
-  color: #ff3d57 !important;
+  color: #c86e52 !important;
   font-size: 16px !important;
   font-weight: 600 !important;
-  margin-bottom: 8px !important;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 16px !important;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e5df;
   display: block !important;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #e1bea5;
+  }
 }
 
 .hover-menu-items-wrapper {
   display: flex;
-  flex-direction: column;
-  padding-left: 10px;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 
 .hover-menu-item {
   display: block;
-  padding: 6px 0;
+  padding: 8px 5px;
   font-size: 14px !important;
-  color: #555;
+  color: #5a5149;
   transition: all 0.25s ease;
   cursor: pointer;
   border-radius: 4px;
+  flex: 0 0 33.33%;
+  padding-left: 12px;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+    transition: all 0.25s ease;
+  }
   
   &:hover {
-    color: #1890ff;
-    padding-left: 5px;
-    background-color: rgba(24, 144, 255, 0.05);
+    color: #c86e52;
+    padding-left: 16px;
+    background-color: rgba(225, 190, 165, 0.1);
+    
+    &:before {
+      border-left-color: #e1bea5;
+    }
   }
 }
 
 // Fix cho hover-menu
 .hover-menu-container {
   position: absolute;
-  top: 0;
-  left: 100%;
+  top: 100%;
+  left: 0;
   z-index: 30;
-  height: 100%;
+  width: 100%;
   display: block;
   /* Thêm vùng đệm vô hình để dễ di chuột qua */
   &:before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -20px;
-    width: 20px;
-    height: 100%;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
     z-index: 29;
+  }
+}
+
+// Media queries cho responsive
+@media (min-width: 1200px) {
+  .hover-menu-stack {
+    max-width: 100%;
+    padding: 0 15px;
   }
 }
 
@@ -123,14 +189,20 @@
     position: relative;
     margin-top: 0;
     height: auto;
-    max-height: 400px;
+    max-height: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     left: 0;
     animation: fadeInDown 0.3s ease;
+    padding: 20px 15px;
+    border-radius: 0;
   }
   
   .hover-menu-category-column {
     flex: 0 0 50%;
+    
+    &:not(:last-child):after {
+      display: none;
+    }
   }
   
   .hover-menu-container {
@@ -145,14 +217,24 @@
   .hover-bridge {
     display: none;
   }
+  
+  .hover-menu-item {
+    flex: 0 0 50%;
+  }
 }
 
 @media (max-width: 768px) {
   .hover-menu-paper {
     margin-left: 0;
+    padding: 15px 10px;
   }
   
   .hover-menu-category-column {
+    flex: 0 0 100%;
+    padding: 0 10px;
+  }
+  
+  .hover-menu-item {
     flex: 0 0 100%;
   }
 } 

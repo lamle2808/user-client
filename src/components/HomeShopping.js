@@ -6,7 +6,7 @@ import "../styles/ListItem.scss"; // Import CSS
 const HomeShopping = () => {
   const [dataPhone, setDataPhone] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 4; // Giữ 4 item giống như ListItem
+  const itemsPerPage = 6; // Tăng lên 6 sản phẩm mỗi hàng
   const style = [
     { top: "-6em" },
     { bottom: "270px" }
@@ -64,7 +64,7 @@ const HomeShopping = () => {
             dataPhone
               .slice(currentIndex, currentIndex + itemsPerPage)
               .map((item, index) => (
-                <div className="col-3" key={index}>
+                <div className="col-2" key={index}>
                   <Item children={item} style={style} />
                 </div>
               ))

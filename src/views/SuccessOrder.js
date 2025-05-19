@@ -163,6 +163,37 @@ const SuccessOrder = () => {
                   <span>x{item.quantity}</span>
                   <span>{formatPrice(item.product.price * item.quantity)} đ</span>
                 </div>
+                {item.productSpecification && (
+                  <div style={{ 
+                    display: "flex", 
+                    gap: "10px", 
+                    marginTop: "5px",
+                    fontSize: "13px"
+                  }}>
+                    {item.productSpecification.size && (
+                      <span style={{ 
+                        backgroundColor: "rgba(0,0,0,0.05)", 
+                        padding: "3px 8px", 
+                        borderRadius: "4px",
+                        display: "inline-flex"
+                      }}>
+                        <span style={{ fontWeight: "bold", marginRight: "4px" }}>Size:</span> 
+                        {item.productSpecification.size}
+                      </span>
+                    )}
+                    {item.productSpecification.color && (
+                      <span style={{ 
+                        backgroundColor: "rgba(0,0,0,0.05)", 
+                        padding: "3px 8px", 
+                        borderRadius: "4px",
+                        display: "inline-flex"
+                      }}>
+                        <span style={{ fontWeight: "bold", marginRight: "4px" }}>Màu:</span> 
+                        {item.productSpecification.color}
+                      </span>
+                    )}
+                  </div>
+                )}
               </li>
             ))}
           </ul>

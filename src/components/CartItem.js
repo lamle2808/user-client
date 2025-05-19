@@ -228,6 +228,45 @@ const CartItem = (props) => {
           >
             Đơn giá: {formatPrice(item.product.price)} VND
           </Typography>
+          
+          {/* Hiển thị thông tin size và màu sắc */}
+          {item.productSpecification && (
+            <Box sx={{ display: 'flex', gap: 2, mb: 1 }}>
+              {item.productSpecification.size && (
+                <Typography 
+                  variant="body2" 
+                  color={outOfStock ? "text.disabled" : "text.secondary"}
+                  sx={{ 
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(0,0,0,0.05)',
+                    px: 1,
+                    py: 0.5,
+                    borderRadius: 1
+                  }}
+                >
+                  <span style={{ fontWeight: 'bold', marginRight: '4px' }}>Size:</span> {item.productSpecification.size}
+                </Typography>
+              )}
+              
+              {item.productSpecification.color && (
+                <Typography 
+                  variant="body2" 
+                  color={outOfStock ? "text.disabled" : "text.secondary"}
+                  sx={{ 
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(0,0,0,0.05)',
+                    px: 1,
+                    py: 0.5,
+                    borderRadius: 1
+                  }}
+                >
+                  <span style={{ fontWeight: 'bold', marginRight: '4px' }}>Màu:</span> {item.productSpecification.color}
+                </Typography>
+              )}
+            </Box>
+          )}
 
           <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
             <IconButton

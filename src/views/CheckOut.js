@@ -1,12 +1,9 @@
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
 import { toast } from "react-toastify";
-// import ConfirmationForm from "./ConfirmationForm";
 import ConfirmOrder from "./Forms/ConfirmOrder";
 import CheckoutItem from "../components/CheckoutItem";
-// import Address from "../components/Address";
 import FormCheckOut from "./Forms/FormCheckOut";
 import {
   FormControl,
@@ -14,7 +11,13 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  Paper,
+  Typography,
+  Divider,
 } from "@mui/material";
+import "../styles/CheckOut.scss";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 const CheckOut = (props) => {
   const [cart, setCart] = useState([]);
   const history = useHistory();
@@ -27,6 +30,11 @@ const CheckOut = (props) => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [value, setValue] = useState("Thanh toán khi nhận hàng");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Định dạng giá tiền
+  const formatPrice = (price) => {
+    return price.toLocaleString('vi-VN');
+  };
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -176,57 +184,63 @@ const CheckOut = (props) => {
   };
 
   return (
-    <div className="container-lg mt-1 bg-white rounded">
+    <div className="checkout-container container-lg">
       <div className="row">
         {cart.length > 0 ? (
           <div className="col-12">
             <div className="row">
               <div className="col-md-7 col-lg-7">
-                <h4 className="mb-3">Tiến hành thanh toán</h4>
-                <a href="home">Thay đổi thông tin</a>
+                <h4 className="checkout-title">Tiến hành thanh toán</h4>
+                <a href="home" className="checkout-change-info">Thay đổi thông tin</a>
                 <FormCheckOut
                   note={note}
                   setNote={setNote}
                 />
               </div>
               <div className="col-md-5 col-lg-5">
-                <div className="shadow bg-white rounded">
-                  <table className="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Hình ảnh</th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Thành tiền</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {cart.length > 0 &&
-                        cart.map((item, index) => {
-                          return item.quantity !== 0 ? (
-                            <CheckoutItem
-                              key={index}
-                              data={item}
-                              index={index}
-                            />
-                          ) : null;
-                        })}
+                <Paper elevation={0} className="checkout-card">
+                  <div className="checkout-card-header">
+                    <Typography variant="subtitle1">
+                      Thông tin đơn hàng
+                    </Typography>
+                  </div>
+                  <div className="table-responsive">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Tên sản phẩm</th>
+                          <th scope="col" className="text-center">Hình ảnh</th>
+                          <th scope="col" className="text-center">Số lượng</th>
+                          <th scope="col" className="text-end">Thành tiền</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {cart.length > 0 &&
+                          cart.map((item, index) => {
+                            return item.quantity !== 0 ? (
+                              <CheckoutItem
+                                key={index}
+                                data={item}
+                                index={index}
+                              />
+                            ) : null;
+                          })}
 
-                      <tr className="sum">
-                        <th scope="total">Thành tiền</th>
-                        <td></td>
-                        <td></td>
-                        <td>{quantity}</td>
-                        <th>{total}</th>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                        <tr className="sum">
+                          <th colSpan="4" className="text-end">Tổng thành tiền:</th>
+                          <th className="price-value text-end">{formatPrice(total)} đ</th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </Paper>
               </div>
             </div>
 
-            <FormControl>
+            <Divider sx={{ my: 3 }} />
+
+            <FormControl className="checkout-payment">
               <FormLabel id="demo-controlled-radio-buttons-group">
                 Phương thức thanh toán
               </FormLabel>
@@ -250,9 +264,9 @@ const CheckOut = (props) => {
             </FormControl>
             <div className="row" style={{ marginTop: 20 }}>
               <button
-                className="w-100 btn btn-danger btn-lg"
+                className="checkout-button w-100 btn"
                 type="submit"
-                onClick={handleCheckOut} // Show the popup
+                onClick={handleCheckOut}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Đang xử lý...' : 'Tiếp tục để thanh toán'}
@@ -270,7 +284,10 @@ const CheckOut = (props) => {
             )}
           </div>
         ) : (
-          <div className="col-12">Bạn chưa chọn sản phẩm nào</div>
+          <div className="empty-cart">
+            <ShoppingCartIcon className="empty-cart-icon" />
+            <Typography>Bạn chưa chọn sản phẩm nào</Typography>
+          </div>
         )}
       </div>
     </div>

@@ -1,0 +1,216 @@
+/* Styles cho trang Checkout */
+
+.checkout-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  padding: 24px;
+}
+
+.checkout-title {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.checkout-change-info {
+  color: #2962FF;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 24px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.checkout-form {
+  margin-bottom: 32px;
+  
+  .form-label {
+    font-weight: 500;
+    color: #424242;
+    font-size: 14px;
+  }
+  
+  .form-control {
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    height: auto;
+    transition: all 0.2s;
+    
+    &:focus {
+      border-color: #2962FF;
+      box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.1);
+    }
+    
+    &:disabled {
+      background-color: #f9f9f9;
+      color: #616161;
+    }
+  }
+}
+
+.checkout-card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  
+  .checkout-card-header {
+    background-color: #f9f9f9;
+    padding: 16px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .table {
+    margin-bottom: 0;
+    
+    th {
+      color: #616161;
+      font-weight: 600;
+      background-color: #f9f9f9;
+      font-size: 14px;
+      border-top: none;
+      padding: 16px;
+    }
+    
+    td {
+      padding: 16px;
+      vertical-align: middle;
+      border-color: #f0f0f0;
+    }
+    
+    tr.sum {
+      background-color: #f9f9f9;
+      
+      th, td {
+        font-weight: 600;
+        color: #333;
+      }
+    }
+  }
+}
+
+.checkout-payment {
+  margin: 32px 0;
+  
+  .MuiFormLabel-root {
+    color: #424242;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .MuiRadio-root {
+    color: #2962FF;
+  }
+  
+  .MuiFormControlLabel-label {
+    font-size: 15px;
+  }
+  
+  .MuiFormControlLabel-root {
+    margin-left: 4px;
+  }
+}
+
+.checkout-button {
+  background: linear-gradient(to right, #2962FF, #1565C0);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  padding: 14px 24px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.3s;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+  
+  &:hover, &:focus {
+    background: linear-gradient(to right, #1565C0, #0D47A1);
+    box-shadow: 0 4px 12px rgba(41, 98, 255, 0.2);
+  }
+  
+  &:disabled {
+    background: linear-gradient(to right, #90CAF9, #64B5F6);
+    cursor: not-allowed;
+  }
+}
+
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.product-details {
+  .product-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  .product-price {
+    color: #e53935;
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  
+  .product-spec {
+    color: #757575;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+}
+
+.price-value {
+  color: #e53935;
+  font-weight: 600;
+}
+
+.empty-cart {
+  padding: 48px 0;
+  text-align: center;
+  color: #757575;
+  font-size: 16px;
+  
+  .empty-cart-icon {
+    font-size: 48px;
+    color: #bdbdbd;
+    margin-bottom: 16px;
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .checkout-title {
+    font-size: 20px;
+  }
+  
+  .checkout-card {
+    margin-top: 32px;
+  }
+  
+  .table th, .table td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+  
+  .product-image {
+    width: 50px;
+    height: 50px;
+  }
+} 

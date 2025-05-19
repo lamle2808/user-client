@@ -1,12 +1,15 @@
 .ContainerDes {
   display: flex;
   flex-direction: column;
-  color: black;
-  width: 49%;
-  float: right;
-  text-align: justify;
-  margin-top: 2.5em;
-  padding: 0 15px;
+  color: #333;
+  width: 55%;
+  padding: 2rem;
+  margin: 0;
+  
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 1.5rem;
+  }
   
   @keyframes fadeIn {
     from {
@@ -26,7 +29,10 @@
   // Paper container
   .MuiPaper-root {
     transition: all 0.3s ease;
-    border: 1px solid #eee;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     
     &:hover {
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -36,52 +42,45 @@
   // Chip styling
   .MuiChip-root {
     font-weight: 500;
+    margin: 0 5px 5px 0;
     
     &.MuiChip-outlinedPrimary {
-      border-color: #146C94;
-      color: #146C94;
+      border-color: #1890ff;
+      color: #1890ff;
     }
     
     &.MuiChip-outlinedSecondary {
-      border-color: #e63946;
-      color: #e63946;
+      border-color: #ff4d4f;
+      color: #ff4d4f;
     }
   }
   
   // Flash sale box
   .flash-sale-box {
     animation: pulse 2s infinite;
+    background-color: #fff8f8;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 1.5rem;
+    border: 1px dashed #ff4d4f;
     
     @keyframes pulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4);
+        box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.4);
       }
       70% {
-        box-shadow: 0 0 0 10px rgba(230, 57, 70, 0);
+        box-shadow: 0 0 0 5px rgba(255, 77, 79, 0);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+        box-shadow: 0 0 0 0 rgba(255, 77, 79, 0);
       }
-    }
-    
-    // Hiệu ứng cho đồng hồ đếm ngược
-    @keyframes blink {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.7;
-      }
-    }
-    
-    .MuiTypography-caption {
-      animation: blink 1s infinite;
     }
   }
   
   // Button hover effects
   .MuiButton-root {
     transition: all 0.3s ease !important;
+    border-radius: 4px !important;
     
     &:active {
       transform: scale(0.98) !important;
@@ -90,6 +89,53 @@
     &.MuiButton-contained {
       &:hover {
         transform: translateY(-3px) !important;
+      }
+    }
+  }
+  
+  // Nút kích thước và màu sắc
+  .size-button, .color-button {
+    margin: 4px;
+    min-width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    
+    &.selected {
+      background-color: #1890ff;
+      color: white;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+  }
+  
+  .color-button {
+    min-width: 80px;
+  }
+  
+  // Ưu đãi khi mua hàng
+  .benefits-container {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      svg {
+        color: #ff4d4f;
+        margin-right: 10px;
       }
     }
   }
@@ -169,22 +215,6 @@
   }
   
   // Responsiveness
-  @media (max-width: 992px) {
-    width: 100%;
-    float: none;
-    margin-top: 1em;
-    padding: 0 10px;
-    
-    .MuiPaper-root {
-      padding: 15px !important;
-    }
-    
-    // Stack buttons on mobile
-    .action-buttons {
-      flex-direction: column;
-    }
-  }
-  
   @media (max-width: 768px) {
     .MuiTypography-h4 {
       font-size: 1.5rem !important;
@@ -218,148 +248,6 @@
     width: 100%;
   }
   
-  // Nút kích thước và màu sắc
-  .size-button, .color-button {
-    margin: 4px;
-    min-width: 45px;
-    height: 45px;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    
-    &.selected {
-      background-color: #146C94;
-      color: white;
-    }
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-  }
-  
-  .color-button {
-    min-width: 80px;
-  }
-  
-  // Ưu đãi khi mua hàng
-  .benefits-container {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    
-    .benefit-title {
-      color: #e63946;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    
-    .benefit-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-      
-      svg {
-        color: #e63946;
-        margin-right: 10px;
-      }
-      
-      p {
-        margin: 0;
-        font-size: 14px;
-      }
-    }
-  }
-  
-  // Nút mua hàng và thêm vào giỏ
-  .action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    
-    .buy-button {
-      background-color: #e63946;
-      color: white;
-      padding: 12px;
-      font-weight: 600;
-      border-radius: 6px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        background-color: #c1121f;
-        box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
-      }
-    }
-    
-    .cart-button {
-      background-color: white;
-      color: #146C94;
-      border: 1px solid #146C94;
-      padding: 12px;
-      font-weight: 600;
-      border-radius: 6px;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        background-color: rgba(20, 108, 148, 0.04);
-        box-shadow: 0 4px 12px rgba(20, 108, 148, 0.1);
-      }
-    }
-  }
-  
-  // Số lượng
-  .quantity-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    
-    .quantity-label {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #333;
-    }
-    
-    .quantity-controls {
-      display: flex;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      overflow: hidden;
-      
-      button {
-        width: 40px;
-        height: 40px;
-        background-color: #f5f5f5;
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-        transition: background-color 0.2s;
-        
-        &:hover {
-          background-color: #e0e0e0;
-        }
-      }
-      
-      .quantity-value {
-        min-width: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        font-weight: 500;
-      }
-    }
-    
-    .stock-info {
-      margin-left: 15px;
-      color: #666;
-      font-size: 14px;
-    }
-  }
-
   .ContainerChild {
     display: flex;
     flex-direction: row;
