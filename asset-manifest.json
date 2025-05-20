@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/user-client/static/css/main.21b3b84e.css",
-    "main.js": "/user-client/static/js/main.85d372fd.js",
+    "main.css": "/user-client/static/css/main.a7bac3f1.css",
+    "main.js": "/user-client/static/js/main.343a5af5.js",
+    "static/media/thumbai_1.png": "/user-client/static/media/thumbai_1.77254f4e464bbec440e6.png",
+    "static/media/thumbai_2.png": "/user-client/static/media/thumbai_2.7fa3403f9549494f12cc.png",
+    "static/media/thumbai_3.png": "/user-client/static/media/thumbai_3.a5c792a52563468e14d6.png",
     "static/media/logo.png": "/user-client/static/media/logo.fb7c111822fc950cf6e7.png",
     "index.html": "/user-client/index.html",
-    "main.21b3b84e.css.map": "/user-client/static/css/main.21b3b84e.css.map",
-    "main.85d372fd.js.map": "/user-client/static/js/main.85d372fd.js.map"
+    "main.a7bac3f1.css.map": "/user-client/static/css/main.a7bac3f1.css.map",
+    "main.343a5af5.js.map": "/user-client/static/js/main.343a5af5.js.map"
   },
   "entrypoints": [
-    "static/css/main.21b3b84e.css",
-    "static/js/main.85d372fd.js"
+    "static/css/main.a7bac3f1.css",
+    "static/js/main.343a5af5.js"
   ]
 }
