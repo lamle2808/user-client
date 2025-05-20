@@ -5,28 +5,25 @@ export const aoThunData = [
   {
     id: "Áo Thun Theo Loại",
     type: [
-      { name: "Áo thun tay ngắn" },
+      { name: "Áo thun cổ tròn tay ngắn" },
+      { name: "Áo thun cổ polo tay ngắn" },
+      { name: "Áo thun ba lỗ" },
       { name: "Áo thun tay dài" },
-      { name: "Áo thun oversize" },
-      { name: "Áo thun in hình" },
-      { name: "Áo thun trơn" },
-    ],
-  },
-  {
-    id: "Áo Thun Theo Giới Tính",
-    type: [
-      { name: "Áo thun nam" },
-      { name: "Áo thun nữ" },
-      { name: "Áo thun unisex" },
+      { name: "Áo thun tay ngắn" },
     ],
   },
   {
     id: "Áo Thun Theo Thương Hiệu",
     type: [
-      { name: "Nike" },
-      { name: "Adidas" },
-      { name: "Local Brand" },
-      { name: "H&M" },
+      { name: "Louis Viuton" },
+      { name: "Dragon Ball Z" },
+      { name: "French Terry" },
+      { name: "Beginner" },
+      { name: "No Style" },
+      { name: "Seafarer" },
+      { name: "Minimalist" },
+      { name: "Seventy Seven" },
+      { name: "One Piece" },
     ],
   },
 ];
@@ -36,27 +33,27 @@ export const aoKhoacData = [
   {
     id: "Áo Khoác Theo Loại",
     type: [
-      { name: "Áo khoác gió" },
-      { name: "Áo khoác da" },
+      { name: "Áo khoác dù" },
+      { name: "Áo khoác Parka" },
+      { name: "Áo khoác kaki" },
       { name: "Áo khoác jean" },
-      { name: "Áo khoác bomber" },
-      { name: "Áo khoác cardigan" },
-    ],
-  },
-  {
-    id: "Áo Khoác Theo Mùa",
-    type: [
-      { name: "Áo khoác mùa đông" },
-      { name: "Áo khoác mùa thu" },
-      { name: "Áo khoác nhẹ mùa hè" },
-    ],
-  },
-  {
-    id: "Áo Khoác Theo Phong Cách",
-    type: [
+      { name: "Áo khoác Hoodie" },
       { name: "Áo khoác thể thao" },
-      { name: "Áo khoác công sở" },
-      { name: "Áo khoác dạo phố" },
+      { name: "Áo khoác thun" },
+    ],
+  },
+  {
+    id: "Áo Khoác Theo Thương Hiệu",
+    type: [
+      { name: "Louis Viuton" },
+      { name: "Dragon Ball Z" },
+      { name: "French Terry" },
+      { name: "Beginner" },
+      { name: "No Style" },
+      { name: "Seafarer" },
+      { name: "Minimalist" },
+      { name: "Seventy Seven" },
+      { name: "One Piece" },
     ],
   },
 ];
@@ -74,20 +71,17 @@ export const aoSoMiData = [
     ],
   },
   {
-    id: "Áo Sơ Mi Theo Chất Liệu",
+    id: "Áo Sơ Mi Theo Thương Hiệu",
     type: [
-      { name: "Áo sơ mi cotton" },
-      { name: "Áo sơ mi lụa" },
-      { name: "Áo sơ mi linen" },
-      { name: "Áo sơ mi nhung" },
-    ],
-  },
-  {
-    id: "Áo Sơ Mi Theo Dịp",
-    type: [
-      { name: "Áo sơ mi công sở" },
-      { name: "Áo sơ mi dự tiệc" },
-      { name: "Áo sơ mi dạo phố" },
+      { name: "Louis Viuton" },
+      { name: "Dragon Ball Z" },
+      { name: "French Terry" },
+      { name: "Beginner" },
+      { name: "No Style" },
+      { name: "Seafarer" },
+      { name: "Minimalist" },
+      { name: "Seventy Seven" },
+      { name: "One Piece" },
     ],
   },
 ];
@@ -97,26 +91,24 @@ export const quanShortData = [
   {
     id: "Quần Short Theo Loại",
     type: [
+      { name: "Quần short thể thao" },
       { name: "Quần short jean" },
       { name: "Quần short kaki" },
       { name: "Quần short thun" },
-      { name: "Quần short thể thao" },
     ],
   },
   {
-    id: "Quần Short Theo Độ Dài",
+    id: "Quần Short Theo Thương Hiệu",
     type: [
-      { name: "Quần short siêu ngắn" },
-      { name: "Quần short ngang đùi" },
-      { name: "Quần short dài" },
-    ],
-  },
-  {
-    id: "Quần Short Theo Phong Cách",
-    type: [
-      { name: "Quần short đi biển" },
-      { name: "Quần short dạo phố" },
-      { name: "Quần short thời trang" },
+      { name: "Louis Viuton" },
+      { name: "Dragon Ball Z" },
+      { name: "French Terry" },
+      { name: "Beginner" },
+      { name: "No Style" },
+      { name: "Seafarer" },
+      { name: "Minimalist" },
+      { name: "Seventy Seven" },
+      { name: "One Piece" },
     ],
   },
 ];
@@ -126,29 +118,25 @@ export const quanDaiData = [
   {
     id: "Quần Dài Theo Loại",
     type: [
+      { name: "Quần tây" },
       { name: "Quần jean" },
       { name: "Quần kaki" },
-      { name: "Quần tây" },
       { name: "Quần jogger" },
       { name: "Quần cargo" },
     ],
   },
   {
-    id: "Quần Dài Theo Kiểu Dáng",
+    id: "Quần Dài Theo Thương Hiệu",
     type: [
-      { name: "Quần ống suông" },
-      { name: "Quần ống côn" },
-      { name: "Quần skinny" },
-      { name: "Quần baggy" },
-      { name: "Quần ống loe" },
-    ],
-  },
-  {
-    id: "Quần Dài Theo Phong Cách",
-    type: [
-      { name: "Quần công sở" },
-      { name: "Quần thể thao" },
-      { name: "Quần dạo phố" },
+      { name: "Louis Viuton" },
+      { name: "Dragon Ball Z" },
+      { name: "French Terry" },
+      { name: "Beginner" },
+      { name: "No Style" },
+      { name: "Seafarer" },
+      { name: "Minimalist" },
+      { name: "Seventy Seven" },
+      { name: "One Piece" },
     ],
   },
 ];
@@ -158,27 +146,25 @@ export const phuKienData = [
   {
     id: "Phụ Kiện Thời Trang",
     type: [
-      { name: "Mũ nón" },
-      { name: "Thắt lưng" },
-      { name: "Kính mát" },
-      { name: "Khăn quàng" },
+      { name: "Ví" },
+      { name: "Dây nịt" },
+      { name: "Nón" },
+      { name: "Kính" },
+ 
     ],
   },
   {
-    id: "Trang Sức",
+    id: "Giày",
     type: [
-      { name: "Vòng tay" },
-      { name: "Dây chuyền" },
-      { name: "Nhẫn" },
-      { name: "Khuyên tai" },
+      { name: "Giày tây" },
+      { name: "Giày casual" },
     ],
   },
   {
     id: "Phụ Kiện Khác",
     type: [
       { name: "Túi xách" },
-      { name: "Giày dép" },
-      { name: "Ví" },
+      { name: "Túi đeo" },
       { name: "Ba lô" },
     ],
   },

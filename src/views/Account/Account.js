@@ -9,10 +9,13 @@ import {
   MenuItem,
   Avatar,
   CircularProgress,
+  Typography,
+  Paper,
+  Container,
 } from "@mui/material";
 import Left from "../User/Left";
 import logo from "../../assets/images/logo.png";
-import { TextInput } from "./Style";
+import { TextInput, ProfileAvatar, UpdateButton, FormContainer } from "./Style";
 import { createRef, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -35,12 +38,14 @@ function Account() {
   const [sex, setSex] = useState(dataUser.sex);
   const [done, setDone] = useState(true);
   const [id, setId] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setSex(event.target.value);
   };
 
   const handleSubmit = (e) => {
+    setLoading(true);
     axios
       .post(`/api/v1/customer/createOrUpdate`, {
         id: dataUser.id,
@@ -60,10 +65,13 @@ function Account() {
       })
       .then((res) => {
         localStorage.setItem("data", JSON.stringify(res.data));
-        toast.success("Thành công");
+        toast.success("Cập nhật thông tin thành công!");
+        setLoading(false);
       })
       .catch(function (error) {
         console.log(error);
+        toast.error("Đã có lỗi xảy ra khi cập nhật thông tin");
+        setLoading(false);
       });
   };
 
@@ -84,9 +92,12 @@ function Account() {
         .then(function (response) {
           setDone(true);
           setId(response.data.id);
+          toast.success("Cập nhật ảnh đại diện thành công!");
         })
         .catch(function (error) {
           console.log(error);
+          toast.error("Đã có lỗi khi tải ảnh lên");
+          setDone(true);
         });
     }
   };
@@ -94,46 +105,58 @@ function Account() {
   // Ref cho input file
   const imageInputRef = createRef();
   return (
-    <Box
-      sx={{
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-        marginTop: 2,
-        paddingBottom: 2,
-      }}
-    >
-      <Stack direction={"row"} sx={{ width: "80vw" }} gap={5}>
+    <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Stack direction={"row"} sx={{ width: "100%" }} gap={5}>
         <Left />
-        <Stack
+        <Paper
+          elevation={3}
           sx={{
             width: "100%",
-            backgroundColor: "white",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             borderRadius: 5,
+            p: 3,
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <input
-            type="file"
-            ref={imageInputRef}
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-          <Button onClick={handleImageClick}>
-            <Avatar
-              alt="Remy Sharp"
-              src={ava || logo}
-              sx={{ width: 100, height: 100 }}
-            />
-          </Button>
-
           <Box
             sx={{
-              width: 500,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "150px",
+              background: "linear-gradient(135deg, #146C94 0%, #19A7CE 100%)",
+              zIndex: 0,
             }}
-          >
-            <Stack direction={"row"} sx={{ marginTop: 5 }} gap={5}>
+          />
+          
+          <Box sx={{ zIndex: 1, mt: 5, mb: 2 }}>
+            <input
+              type="file"
+              ref={imageInputRef}
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+            <Button onClick={handleImageClick}>
+              <ProfileAvatar
+                alt="Profile Picture"
+                src={ava || logo}
+              />
+            </Button>
+            <Typography variant="subtitle1" textAlign="center" sx={{ mt: 1 }}>
+              {fName} {lName}
+            </Typography>
+          </Box>
+
+          <FormContainer>
+            <Typography variant="h5" fontWeight={600} textAlign="center" sx={{ mb: 4 }}>
+              Thông tin cá nhân
+            </Typography>
+            
+            <Stack direction={"row"} gap={3}>
               <TextField
                 id="standard-basic"
                 label="Họ"
@@ -141,6 +164,14 @@ function Account() {
                 value={lName}
                 fullWidth
                 onChange={(e) => setLName(e.target.value)}
+                sx={{
+                  '& label.Mui-focused': {
+                    color: '#146C94',
+                  },
+                  '& .MuiInput-underline:after': {
+                    borderBottomColor: '#146C94',
+                  },
+                }}
               />
               <TextField
                 id="standard-basic"
@@ -149,6 +180,14 @@ function Account() {
                 value={fName}
                 fullWidth
                 onChange={(e) => setFName(e.target.value)}
+                sx={{
+                  '& label.Mui-focused': {
+                    color: '#146C94',
+                  },
+                  '& .MuiInput-underline:after': {
+                    borderBottomColor: '#146C94',
+                  },
+                }}
               />
             </Stack>
 
@@ -160,6 +199,11 @@ function Account() {
                 value={sex}
                 label="Giới tính"
                 onChange={handleChange}
+                sx={{
+                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#146C94',
+                  },
+                }}
               >
                 <MenuItem value={0}>Nam</MenuItem>
                 <MenuItem value={1}>Nữ</MenuItem>
@@ -209,45 +253,37 @@ function Account() {
             />
             <Stack
               direction={"row"}
-              sx={{ padding: 5, justifyContent: "center" }}
+              sx={{ py: 4, justifyContent: "center" }}
             >
               {done ? (
-                <Button
-                  variant="outlined"
-                  sx={{
-                    width: 300,
-                    borderRadius: 5,
-                    backgroundColor: "#146C94",
-                    color: "white",
-                    ":hover": {
-                      backgroundColor: "#1c98d0",
-                    },
-                  }}
+                <UpdateButton
+                  variant="contained"
                   onClick={handleSubmit}
+                  disabled={loading}
                 >
-                  Cập nhật
-                </Button>
+                  {loading ? <CircularProgress size={24} color="inherit" /> : "Cập nhật thông tin"}
+                </UpdateButton>
               ) : (
                 <Box
                   sx={{
                     width: 300,
-                    borderRadius: 5,
-                    backgroundColor: "#146C94",
+                    borderRadius: 30,
+                    backgroundColor: '#146C94',
                     color: "white",
-                    height: 40,
+                    height: 48,
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <CircularProgress color="inherit" />
+                  <CircularProgress color="inherit" size={24} />
                 </Box>
               )}
             </Stack>
-          </Box>
-        </Stack>
+          </FormContainer>
+        </Paper>
       </Stack>
-    </Box>
+    </Container>
   );
 }
 

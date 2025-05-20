@@ -29,6 +29,7 @@ import Support from "./Support/Support.js";
 import Find from "./Find/Find.js";
 import FPassword from "./FPassword/FPassword.js";
 import PaymentCallback from "./PaymentCallback";
+import News from "./News/News.js";
 
 function App() {
   const [isLog, setIsLog] = useState(false);
@@ -80,6 +81,9 @@ function App() {
               </Route>
               <Route path="/Support" exact>
                 <Support />
+              </Route>
+              <Route path="/News" exact>
+                <News />
               </Route>
               <Route path="/ForgotPass" exact>
                 <FPassword />

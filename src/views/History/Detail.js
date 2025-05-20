@@ -25,6 +25,8 @@ function Detail() {
     axios
       .get(`/api/v1/orders/getOrderById/${idO.id}`)
       .then(function (response) {
+        console.log("Thông tin đơn hàng từ API:", response.data);
+        console.log("Thông tin khách hàng:", response.data.customer);
         setData(response.data);
         setSum(
           response.data.orderDetails.reduce(
@@ -242,18 +244,26 @@ function Detail() {
                   Thông tin khách hàng
                 </Typography>
                 <Typography variant="body1">
+                  Mã khách hàng: {data.customer.id || "Không có"}
+                </Typography>
+                <Typography variant="body1">
                   Họ và tên:
-                  {" " + data.customer.lastName + " " + data.customer.firstName}
+                  {" " + (data.customer.lastName || "") + " " + (data.customer.firstName || "")}
                 </Typography>
                 <Typography variant="body1">
-                  Email: {data.customer.email}
+                  Email: {data.customer.email || "Không có"}
                 </Typography>
                 <Typography variant="body1">
-                  SDT: {data.customer.phone}
+                  SDT: {data.customer.phone || "Không có"}
                 </Typography>
                 <Typography variant="body1">
-                  Địa chỉ: {data.customer.address}
+                  Địa chỉ: {data.customer.address || "Không có"}
                 </Typography>
+                {data.customer.dateOfBirth && (
+                  <Typography variant="body1">
+                    Ngày sinh: {new Date(data.customer.dateOfBirth).toLocaleDateString('vi-VN')}
+                  </Typography>
+                )}
                 <Box>
                   <Typography
                     variant="h6"
@@ -372,3 +382,4 @@ function Detail() {
 }
 
 export default Detail;
+

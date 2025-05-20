@@ -33,19 +33,19 @@ const Home = () => {
       title: "Giá Mềm - Xài Bền - Mặc Sướng",
       priceLabel: "Chi từ",
       price: "68.000đ",
-      image: thumbai1
+      image: thumbai3
     },
     {
       title: "Thời Trang Mới Nhất 2023",
       priceLabel: "Giảm tới",
       price: "50%",
-      image: thumbai2
+      image: thumbai1
     },
     {
-      title: "Bộ Sưu Tập Hè Thu",
+      title: "Bộ Sưu Tập Hè",
       priceLabel: "Từ",
       price: "99.000đ",
-      image: thumbai3
+      image: thumbai2
     }
   ];
   
@@ -216,43 +216,43 @@ const Home = () => {
             {[
               { 
                 id: 1, 
-                name: "Áo thun", 
+                name: "Áo thun cổ tròn tay ngắn", 
                 image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
               },
               { 
-                id: 2, 
-                name: "Quần Jean", 
-                image: "https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                id: 5, 
+                name: "Quần tây", 
+                image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
               },
               { 
-                id: 3, 
-                name: "Giày", 
+                id: 14, 
+                name: "Áo khoác Hoodie", 
+                image: "https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              },
+              { 
+                id: 20, 
+                name: "Túi đeo", 
+                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              },
+              { 
+                id: 22, 
+                name: "Giày casual", 
                 image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
               },
               { 
                 id: 4, 
-                name: "Túi xách", 
-                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                name: "Áo sơ mi tay dài", 
+                image: "https://images.unsplash.com/photo-1563630423918-b58f07336ac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
               },
               { 
-                id: 5, 
-                name: "Áo khoác", 
-                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                id: 19, 
+                name: "Nón", 
+                image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
               },
               { 
                 id: 6, 
-                name: "Phụ kiện", 
-                image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-              },
-              { 
-                id: 7, 
-                name: "Đồ thể thao", 
-                image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-              },
-              { 
-                id: 8, 
-                name: "Đồ mùa đông", 
-                image: "https://images.unsplash.com/photo-1610652492500-ded49ceeb378?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                name: "Ví", 
+                image: "https://images.unsplash.com/photo-1627123424574-724758594e93?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
               }
             ].map(category => (
               <Link key={category.id} to={`/Shopping?category=${category.id}`} className="category-card">
@@ -266,19 +266,6 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </Container>
-      
-      {/* Dành cho bạn */}
-      <div className="section-title" style={{ marginTop: "3rem" }}>
-        <h1>DÀNH CHO BẠN</h1>
-        <p className="section-description" style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto", color: "#666", marginBottom: "1.5rem" }}>
-          Những sản phẩm phù hợp với sở thích và phong cách của bạn, được tuyển chọn dựa trên xu hướng hiện nay
-        </p>
-      </div>
-      <Container maxWidth="lg" sx={{ mb: 5, pb: 3 }}>
-        <Paper elevation={0} sx={{ p: 2, borderRadius: "12px", backgroundColor: "#f9f9f9" }}>
-          <HomeShopping />
-        </Paper>
       </Container>
       
       {/* Newsletter Section */}

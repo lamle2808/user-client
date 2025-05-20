@@ -1,27 +1,89 @@
-import { Box, Grid, Stack, Typography, styled } from "@mui/material";
+import { Box, Grid, Stack, Typography, styled, Chip } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import PendingIcon from "@mui/icons-material/Pending";
+import CancelIcon from "@mui/icons-material/Cancel";
+import PaidIcon from "@mui/icons-material/Paid";
+import PaymentsIcon from "@mui/icons-material/Payments";
 
 export const CheckStatus = ({ value }) => {
   if (value === "1") {
-    return <div>Đang xử lý</div>;
+    return (
+      <Chip 
+        icon={<PendingIcon />} 
+        label="Đang xử lý" 
+        color="warning" 
+        variant="outlined"
+        size="small"
+        sx={{ fontWeight: 500 }}
+      />
+    );
   } else if (value === "2") {
-    return <div>Đang vận chuyển</div>;
+    return (
+      <Chip 
+        icon={<LocalShippingIcon />} 
+        label="Đang vận chuyển" 
+        color="info" 
+        variant="outlined" 
+        size="small"
+        sx={{ fontWeight: 500 }}
+      />
+    );
   } else if (value === "3") {
-    return <div>Hoàn thành</div>;
+    return (
+      <Chip 
+        icon={<CheckCircleIcon />} 
+        label="Hoàn thành" 
+        color="success" 
+        variant="outlined" 
+        size="small"
+        sx={{ fontWeight: 500 }}
+      />
+    );
   } else {
-    return <div>Đã hủy</div>;
+    return (
+      <Chip 
+        icon={<CancelIcon />} 
+        label="Đã hủy" 
+        color="error" 
+        variant="outlined"
+        size="small" 
+        sx={{ fontWeight: 500 }}
+      />
+    );
   }
 };
+
 export const CheckStatusPay = ({ value }) => {
   if (value === 0) {
-    return <div>Chưa thanh toán</div>;
+    return (
+      <Chip 
+        icon={<PaymentsIcon />} 
+        label="Chưa thanh toán" 
+        color="warning"
+        variant="outlined" 
+        size="small"
+        sx={{ fontWeight: 500 }}
+      />
+    );
   } else if (value === 1) {
-    return <div>Đã thanh toán</div>;
+    return (
+      <Chip 
+        icon={<PaidIcon />} 
+        label="Đã thanh toán" 
+        color="success" 
+        variant="outlined"
+        size="small"
+        sx={{ fontWeight: 500 }}
+      />
+    );
   } else {
-    <div>""</div>;
+    return null;
   }
 };
+
 export const ValueDate = ({ value }) => {
   const dateObject = new Date(value);
   const day = dateObject.getDate(); // Lấy ngày
@@ -32,6 +94,7 @@ export const ValueDate = ({ value }) => {
   const date = `${hours}:${minutes} - ${day}/${month}/${year}`;
   return <div>{date}</div>;
 };
+
 export const ValueDate2 = (value) => {
   const dateObject = new Date(value);
   const day = dateObject.getDate(); // Lấy ngày
@@ -42,6 +105,7 @@ export const ValueDate2 = (value) => {
   const date = `${hours}:${minutes} - ${day}/${month}/${year}`;
   return date;
 };
+
 export const StackNav = styled(Stack)({
   width: "80%",
   backgroundColor: "white",
@@ -53,6 +117,7 @@ export const StackNav = styled(Stack)({
   border: "1px solid black",
   marginTop: 10,
 });
+
 export const BoxBtn = styled(Box)({
   backgroundColor: "white",
   padding: 10,
@@ -61,6 +126,7 @@ export const BoxBtn = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
 });
+
 export const GridBox = styled(Grid)({
   border: "1px solid black",
   borderRadius: 20,
@@ -68,6 +134,7 @@ export const GridBox = styled(Grid)({
   paddingBottom: 10,
   backgroundColor: "white",
 });
+
 export const SaleDis = ({ value }) => {
   const [data, setData] = useState("");
 

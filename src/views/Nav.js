@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LocalMallIcon from '@mui/icons-material/LocalMall';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 const Nav = () => {
   const { isLoggedIn, searchInput, setSearchInput } = useAuth(); // Sử dụng useAuth để lấy trạng thái đăng nhập
@@ -138,6 +139,17 @@ const Nav = () => {
                     <Stack direction="column" alignItems="center" spacing={0}>
                       <ListIcon />
                       <Typography variant="caption">Sản phẩm</Typography>
+                    </Stack>
+                  </Link>
+                </Tooltip>
+              </li>
+
+              <li className="nav-item">
+                <Tooltip title="Tin tức">
+                  <Link className="nav-link" to="/News">
+                    <Stack direction="column" alignItems="center" spacing={0}>
+                      <NewspaperIcon />
+                      <Typography variant="caption">Tin tức</Typography>
                     </Stack>
                   </Link>
                 </Tooltip>
